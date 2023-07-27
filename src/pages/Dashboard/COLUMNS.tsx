@@ -4,46 +4,38 @@ import { BiPencil } from "react-icons/bi";
 
 export const COLOUMNS = [
     {
-        Header: 'EmpID',
+        Header: 'SiteName',
         accessor: 'emp_id'
     },
     {
-        Header: 'First Name',
+        Header: 'CPE 1',
         accessor: 'first_name'
     },
     {
-        Header: 'Last Name',
+        Header: 'CPE 2',
         accessor: 'last_name'
     },
     {
-        Header: 'Job Profile',
+        Header: 'Last Update',
         accessor: 'job_profile'
     },
-    {
-        Header: 'Phone Number',
-        accessor: 'primary_contact_no'
-    },
-    {
-        Header: 'Reporting Manager',
-        accessor: 'reporting_to'
-    },
-    {
-        Header: 'Action',
-        accessor: '',
-        Cell: ({ cell }) => (
+    // {
+    //     Header: 'Action',
+    //     accessor: '',
+    //     Cell: ({ cell }) => (
 
-            <div className='flex gap-2'>
-                <button className='hover:text-blue-500 text-xl'>
-                    <Link href={"/Profile/Profile?empId=" + cell.row.values.emp_id}>
-                        <AiFillEye />
-                    </Link>
-                </button>
-                <button className='hover:text-yellow-400 text-xl'>
-                    <Link href={"/Profile/Profile?empId=" + cell.row.values.emp_id}>
-                        <BiPencil />
-                    </Link>
-                </button>
-            </div>
-        )
-    }
+    //         <div className='flex gap-2'>
+    //             <button className='hover:text-blue-500 text-xl'>
+    //                 <Link href={"/Profile/Profile?empId=" + cell.row.values.emp_id}>
+    //                     <AiFillEye />
+    //                 </Link>
+    //             </button>
+    //             <button className='hover:text-yellow-400 text-xl'>
+    //                 <Link href={"/Profile/Profile?empId=" + cell.row.values.emp_id}>
+    //                     <BiPencil />
+    //                 </Link>
+    //             </button>
+    //         </div>
+    //     )
+    // }
 ]
