@@ -1,11 +1,7 @@
 import Head from "next/head";
 import { Typography, Card } from "@material-tailwind/react";
-import Dashboard from "./Dashboard/Dashboard";
+import Login from "./Login/Login";
 
 export default function Home() {
-  return (
-    <>
-      <Dashboard/>
-    </>
-  );
+  return <Login />;
 }
