@@ -1,24 +1,32 @@
 [
   {
-    "Tata Group": {
-      "Sr No": 1,
-      "Sites Name": "TCS",
-      "Location": "Mumbai",
-      "CPE 1": "Device 1",
-      "CPE 2": "Device 2",
-      "CPE 1 Status": "down",
-      "CPE 2 Status": "up",
-      "timestamp": "169129100"
-    },
-    "Tata Steel": {
-      "Sr No": 2,
-      "Sites Name": "TCS Thiland",
-      "Location": "Thiland",
-      "CPE 1": "Device 1",
-      "CPE 2": "Device 2",
-      "CPE 1 Status": 0,
-      "CPE 2 Status": 1,
-      "timestamp": "17912837"
+    "org": {
+      "title": "Tata Group",
+      "data": [{
+        "sr_no": 1,
+        "sites_name": "TCS",
+        "location": "Mumbai",
+        "CPE1": "Device 1",
+        "CPE2": "Device 2",
+        "CPE1 Status": "down",
+        "CPE2 Status": "up",
+        "timestamp": "169129100"
+      }]
+    }
+  },
+  {
+    "org": {
+      "title": "Tata Steel",
+      "data": [{
+        "sr_no": 2,
+        "sites_name": "TCS Thiland",
+        "location": "Thiland",
+        "CPE1": "Device 1",
+        "CPE2": "Device 2",
+        "CPE1 Status": 0,
+        "CPE2 Status": 1,
+        "timestamp": "17912837"
+      }]
     }
   }
 ]
