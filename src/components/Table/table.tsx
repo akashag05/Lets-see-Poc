@@ -18,7 +18,7 @@ const Table = (props) => {
 
     const { globalFilter, pageIndex } = state;
     return (
-        <div className='flex flex-col'>
+        <div className='flex flex-col w-full'>
             <GlobalFilterTable filter={globalFilter} setFilter={setGlobalFilter} />
             <table id='employeeManagementTable' {...getTableProps()}>
                 <thead>
