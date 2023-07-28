@@ -1,8 +1,8 @@
 import React from "react";
-import Chart from "@/components/Highcharts/chart";
 import { ChartTable } from "@/components/Table/ChartTable";
+import Chart from "@/components/Highcharts/chart";
 
-const CpuUtilozation = () => {
+const MemoryUtilization = () => {
   return (
     <>
       <div className="p-10">
@@ -13,4 +13,4 @@ const CpuUtilozation = () => {
   );
 };
 
-export default CpuUtilozation;
+export default MemoryUtilization;
