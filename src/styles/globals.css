@@ -2,10 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+:root{
+  --primary-color: rgb(20, 247, 20);
+  --header-bg-color: rgb(78, 222, 78);
+  --table-th-bg-color: rgb(154, 255, 154);
+}
+
+.header{
+  background: var(--header-bg-color);
+}
+
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
+  }
+  table th{
+    background: var(--table-th-bg-color);
   }
   
   table td, table th {
@@ -19,7 +32,7 @@ table {
   }
 
 .card-active{
-  border-bottom: 3px solid rgb(0, 94, 255);
+  border-bottom: 3px solid var(--primary-color);
   background: white;
 }
 
