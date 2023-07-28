@@ -1,0 +1,32 @@
+[
+    {
+        "sr_no" : 1,
+        "interface_name": "Gi0/0/0",
+        "interface_in" : "70,502.65",
+        "interface_in_discard" : "502.65",
+        "interface_in_errors" : "70,565",
+        "interface_out" : "13,993,665",
+        "interface_out_discard" : "935",
+        "interface_out_errors" : "93,665"
+    },
+    {
+        "sr_no" : 2,
+        "interface_name": "Gi0/0/1",
+        "interface_in" : "348,076.3",
+        "interface_in_discard" : "70,502.65",
+        "interface_in_errors" : "70,502.65",
+        "interface_out" : "297,630.72",
+        "interface_out_discard" : "13,993,665",
+        "interface_out_errors" : "13,993,665"
+    },
+    {
+        "sr_no" : 3,
+        "interface_name": "Gi0/0/2",
+        "interface_in" : "1,838,210.9",
+        "interface_in_discard" : "70,502.65",
+        "interface_in_errors" : "70,502.65",
+        "interface_out" : "497,238.47",
+        "interface_out_discard" : "13,993,665",
+        "interface_out_errors" : "13,993,665"
+    }
+]

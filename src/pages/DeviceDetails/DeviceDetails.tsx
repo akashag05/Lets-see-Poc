@@ -14,6 +14,7 @@ import Navbar from "@/components/Navbar/navbar";
 import CpuUtilozation from "../CpuUtilization/CpuUtilization";
 import Picker from "@/components/Picker/Picker";
 import { SwitchLabel } from "@/components/Toggle/Toggle";
+import Interface from "@/components/Interface/Interface";
 
 const DeviceDetail = () => {
   const data = [
@@ -88,6 +89,12 @@ const DeviceDetail = () => {
             ))} */}
             <TabPanel key="cpu" value="cpu">
               <CpuUtilozation />
+            </TabPanel>
+            <TabPanel key="memory" value="memory">
+              memory
+            </TabPanel>
+            <TabPanel key="interface" value="interface">
+              <Interface />
             </TabPanel>
           </TabsBody>
         </Tabs>
