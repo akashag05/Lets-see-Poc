@@ -6,7 +6,7 @@ const CpuUtilozation = () => {
   return (
     <>
       <div className="p-10">
-        <Chart />
+        <Chart graphID='cpu'/>
         <ChartTable />
       </div>
     </>

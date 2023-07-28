@@ -6,7 +6,7 @@ const MemoryUtilization = () => {
   return (
     <>
       <div className="p-10">
-        <Chart />
+        <Chart graphID='memory'/>
         <ChartTable />
       </div>
     </>

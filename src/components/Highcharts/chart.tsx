@@ -4,11 +4,11 @@ import HighchartsExporting from "highcharts/modules/exporting";
 import HighchartsExportData from "highcharts/modules/export-data";
 import HighchartsAccessibility from "highcharts/modules/accessibility";
 
-// HighchartsExporting(Highcharts);
-// HighchartsExportData(Highcharts);
-// HighchartsAccessibility(Highcharts);
+HighchartsExporting(Highcharts);
+HighchartsExportData(Highcharts);
+HighchartsAccessibility(Highcharts);
 
-const Chart: React.FC = () => {
+const Chart: React.FC = (props) => {
   useEffect(() => {
     const fetchChartData = async () => {
       try {
@@ -2019,7 +2019,7 @@ const Chart: React.FC = () => {
           // Add more data points as needed
         ];
 
-        Highcharts.chart("container", {
+        Highcharts.chart("container" + props.graphID, {
           chart: {
             zoomType: "x",
             events: {
@@ -2122,7 +2122,7 @@ const Chart: React.FC = () => {
   return (
     <div>
       <figure className="highcharts-figure my-4">
-        <div id="container" />
+        <div id={"container" + props.graphID} />
       </figure>
     </div>
   );
