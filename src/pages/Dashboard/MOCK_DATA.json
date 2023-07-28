@@ -11,12 +11,70 @@
         "CPE1 Status": "down",
         "CPE2 Status": "up",
         "timestamp": "169129100"
+      },
+      {
+        "sr_no": 2,
+        "sites_name": "TCS",
+        "location": "Mumbai",
+        "CPE1": "Device 1",
+        "CPE2": "Device 2",
+        "CPE1 Status": "down",
+        "CPE2 Status": "up",
+        "timestamp": "169129100"
+      },{
+        "sr_no": 3,
+        "sites_name": "TCS",
+        "location": "Mumbai",
+        "CPE1": "Device 1",
+        "CPE2": "Device 2",
+        "CPE1 Status": "down",
+        "CPE2 Status": "up",
+        "timestamp": "169129100"
+      },{
+        "sr_no": 4,
+        "sites_name": "TCS",
+        "location": "Mumbai",
+        "CPE1": "Device 1",
+        "CPE2": "Device 2",
+        "CPE1 Status": "down",
+        "CPE2 Status": "up",
+        "timestamp": "169129100"
       }]
     }
   },
   {
     "org": {
       "title": "Tata Steel",
+      "data": [{
+        "sr_no": 2,
+        "sites_name": "TCS Thiland",
+        "location": "Thiland",
+        "CPE1": "Device 1",
+        "CPE2": "Device 2",
+        "CPE1 Status": 0,
+        "CPE2 Status": 1,
+        "timestamp": "17912837"
+      }]
+    }
+  },
+  {
+    "org": {
+      "title": "Dummy",
+      "data": [{
+        "sr_no": 2,
+        "sites_name": "TCS Thiland",
+        "location": "Thiland",
+        "CPE1": "Device 1",
+        "CPE2": "Device 2",
+        "CPE1 Status": 0,
+        "CPE2 Status": 1,
+        "timestamp": "17912837"
+      }]
+    }
+  },
+  {
+    "org": {
+      "title": "Dummy 2",
       "data": [{
         "sr_no": 2,
         "sites_name": "TCS Thiland",

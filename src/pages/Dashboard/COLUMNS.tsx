@@ -8,7 +8,7 @@ export const COLOUMNS = [
         accessor: 'sr_no'
     },
     {
-        Header: 'Sites Name',
+        Header: 'Site Name',
         accessor: 'sites_name'
     },
     {
@@ -20,7 +20,7 @@ export const COLOUMNS = [
         accessor: 'CPE1'
     },
     {
-        Header: 'CPE-2',
+        Header: 'CPE 2',
         accessor: 'CPE2'
     },
     {
