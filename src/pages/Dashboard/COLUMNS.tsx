@@ -1,41 +1,47 @@
 import Link from "next/link";
-import { AiFillEye } from "react-icons/ai";
-import { BiPencil } from "react-icons/bi";
 
 export const COLOUMNS = [
     {
-        Header: 'SiteName',
-        accessor: 'emp_id'
+        Header: 'Sr No',
+        accessor: 'sr_no'
+    },
+    {
+        Header: 'Site Name',
+        accessor: 'sites_name',
+        Cell: (props: { cell:any,value: string }) => {
+                return <Link href='/DeviceDetails/DeviceDetails'>{props.value}</Link>;
+        },
+    },
+    {
+        Header: 'Location',
+        accessor: 'location'
     },
     {
         Header: 'CPE 1',
-        accessor: 'first_name'
+        accessor: 'CPE1',
+        Cell: (props: { cell:any,value: string }) => {
+            if (props.cell.row.original.CPE1_Status == 'up' || props.cell.row.original.CPE1_Status == 1) {
+                return <span className="device-up">{props.value}</span>;
+            }
+            else if(props.cell.row.original.CPE1_Status == 'down' || props.cell.row.original.CPE1_Status == 0) {
+                return <span className="device-down">{props.value}</span>;
+            }
+        },
     },
     {
         Header: 'CPE 2',
-        accessor: 'last_name'
+        accessor: 'CPE2',
+        Cell: (props: { cell:any,value: string }) => {
+            if (props.cell.row.original.CPE2_Status == 'up' || props.cell.row.original.CPE2_Status == 1) {
+                return <span className="device-up">{props.value}</span>;
+            }
+            else if(props.cell.row.original.CPE2_Status == 'down' || props.cell.row.original.CPE2_Status == 0) {
+                return <span className="device-down">{props.value}</span>;
+            }
+        },
     },
     {
-        Header: 'Last Update',
-        accessor: 'job_profile'
-    },
-    // {
-    //     Header: 'Action',
-    //     accessor: '',
-    //     Cell: ({ cell }) => (
-
-    //         <div className='flex gap-2'>
-    //             <button className='hover:text-blue-500 text-xl'>
-    //                 <Link href={"/Profile/Profile?empId=" + cell.row.values.emp_id}>
-    //                     <AiFillEye />
-    //                 </Link>
-    //             </button>
-    //             <button className='hover:text-yellow-400 text-xl'>
-    //                 <Link href={"/Profile/Profile?empId=" + cell.row.values.emp_id}>
-    //                     <BiPencil />
-    //                 </Link>
-    //             </button>
-    //         </div>
-    //     )
-    // }
+        Header: 'Last Updated',
+        accessor: 'timestamp'
+    }
 ]

@@ -1,24 +1,49 @@
 /* eslint-disable react/jsx-key */
-import React, { useMemo } from 'react';
+import React, { useMemo } from "react";
 // import MOCK_DATA from './MOCK_DATA.json'
-import { useTable, useSortBy, useGlobalFilter, usePagination } from 'react-table';
-import { BiPencil } from 'react-icons/bi'
-import { AiFillEye } from 'react-icons/ai'
-import { GrNext, GrPrevious } from 'react-icons/gr'
-import Link from 'next/link';
-import { GlobalFilterTable } from './GlobalFilterTable';
+import {
+  useTable,
+  useSortBy,
+  useGlobalFilter,
+  usePagination,
+} from "react-table";
+import { BiPencil } from "react-icons/bi";
+import { AiFillEye } from "react-icons/ai";
+import { GrNext, GrPrevious } from "react-icons/gr";
+import Link from "next/link";
+import { GlobalFilterTable } from "./GlobalFilterTable";
 
-const Table = (props) => {
-    const columns = useMemo(() => props.COLOUMNS, [])
-    const data = useMemo(() => props.tableData, []);
-    const { getTableProps, getTableBodyProps, headerGroups, page, prepareRow, state, setGlobalFilter, nextPage, previousPage, canNextPage, canPreviousPage, pageOptions } = useTable({
-        columns,
-        data
-    }, useGlobalFilter, useSortBy, usePagination);
+const Table = (props: any) => {
+//   const columns = useMemo(() => props.COLOUMNS, []);
+//   const data = useMemo(() => props.tableData, []);
+  const columns = useMemo(() => props.COLOUMNS, [props.COLOUMNS]);
+  const data = useMemo(() => props.tableData, [props.tableData]);
+  const {
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    page,
+    prepareRow,
+    state,
+    setGlobalFilter,
+    nextPage,
+    previousPage,
+    canNextPage,
+    canPreviousPage,
+    pageOptions,
+  } = useTable(
+    {
+      columns,
+      data,
+    },
+    useGlobalFilter,
+    useSortBy,
+    usePagination
+  );
 
     const { globalFilter, pageIndex } = state;
     return (
-        <div className='flex flex-col'>
+        <div className='flex flex-col w-full'>
             <GlobalFilterTable filter={globalFilter} setFilter={setGlobalFilter} />
             <table id='employeeManagementTable' {...getTableProps()}>
                 <thead>
@@ -39,7 +64,7 @@ const Table = (props) => {
                         return (
                             <tr {...row.getRowProps()}>
                                 {row.cells.map((cell) => {
-                                    return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                                    return <td {...cell.getCellProps({className: cell.column.className})}>{cell.render('Cell')}</td>
                                 })}
                             </tr>
                         )

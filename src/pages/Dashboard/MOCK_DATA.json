@@ -1,24 +1,200 @@
 [
   {
-    "Tata Group": {
-      "Sr No": 1,
-      "Sites Name": "TCS",
-      "Location": "Mumbai",
-      "CPE 1": "Device 1",
-      "CPE 2": "Device 2",
-      "CPE 1 Status": "down",
-      "CPE 2 Status": "up",
-      "timestamp": "169129100"
-    },
-    "Tata Steel": {
-      "Sr No": 2,
-      "Sites Name": "TCS Thiland",
-      "Location": "Thiland",
-      "CPE 1": "Device 1",
-      "CPE 2": "Device 2",
-      "CPE 1 Status": 0,
-      "CPE 2 Status": 1,
-      "timestamp": "17912837"
+    "org": {
+      "title": "Carlsberg brewery",
+      "data": [
+        {
+          "sr_no": 1,
+          "sites_name": "China",
+          "location": "Huizhou",
+          "CPE1": "CGB-CH-RIC-316-RDS-R-1",
+          "CPE2": "CGB-CH-DIE-IP-IZOIW-01-R-1",
+          "CPE1_Status": "up",
+          "CPE2_Status": "up",
+          "timestamp": "Jul 22, 2023 @ 23:59:53.000"
+        },
+        {
+          "sr_no": 2,
+          "sites_name": "China",
+          "location": "Shanghai",
+          "CPE1": "CGB-CH-GIV-IP-IZOIW-01-R-1",
+          "CPE2": "CGB-CH-TAV-G-EAS-03-R-1",
+          "CPE1_Status": "down",
+          "CPE2_Status": "up",
+          "timestamp": "Jul 22, 2023 @ 23:59:30.000"
+        },
+        {
+          "sr_no": 3,
+          "sites_name": "China",
+          "location": "Hefei",
+          "CPE1": "CGB-CH-KAI-IP-IZOIW-01-R-1",
+          "CPE2": "CGB-CH-SIZ-IP-IZOIW-01-R-1",
+          "CPE1_Status": "down",
+          "CPE2_Status": "down",
+          "timestamp": "Jul 22, 2023 @ 23:58:21.000"
+        },
+        {
+          "sr_no": 4,
+          "sites_name": "China",
+          "location": "Fuzhou",
+          "CPE1": "CGB-CH-RHE-IP-IZOIW-03-R-1",
+          "CPE2": "CGB-CH-RHE-G-IP-IZOIW-R-1",
+          "CPE1_Status": "up",
+          "CPE2_Status": "down",
+          "timestamp": "Jul 22, 2023 @ 23:56:19.000"
+        },
+        {
+          "sr_no": 5,
+          "sites_name": "China",
+          "location": "Guangzhou",
+          "CPE1": "CGB-CH-WIN-IP-IZOIW-01-R-1",
+          "CPE2": "CGB-CH-CSC-IP-IZOIW-03-R-1",
+          "CPE1_Status": "up",
+          "CPE2_Status": "down",
+          "timestamp": "Jul 22, 2023 @ 23:54:54.000"
+        },
+        {
+          "sr_no": 6,
+          "sites_name": "China",
+          "location": "Lanzhou",
+          "CPE1": "CGB-CH-CRI-RDS-R-1",
+          "CPE2": "CGB-CH-VIS-G-EAS-03-R-1",
+          "CPE1_Status": "up",
+          "CPE2_Status": "down",
+          "timestamp": "Jul 22, 2023 @ 23:52:17.000"
+        },
+        {
+          "sr_no": 7,
+          "sites_name": "China",
+          "location": "Guiyang",
+          "CPE1": "CGB-CH-DIE-IP-IZOIW-01-R-1",
+          "CPE2": "CGB-CH-GIV-IP-IZOIW-01-R-1",
+          "CPE1_Status": "up",
+          "CPE2_Status": "down",
+          "timestamp": "Jul 22, 2023 @ 23:51:56.000"
+        },
+        {
+          "sr_no": 8,
+          "sites_name": "China",
+          "location": "Zhengzhou",
+          "CPE1": "CGB-CH-SIZ-IP-IZOIW-01-R-1",
+          "CPE2": "CGB-CH-CSC-IP-IZOIW-01-R-1",
+          "CPE1_Status": "up",
+          "CPE2_Status": "down",
+          "timestamp": ""
+        },
+        {
+          "sr_no": 9,
+          "sites_name": "China",
+          "location": "Wuhan",
+          "CPE1": "CGB-CH-RHE-G-IP-IZOIW-R-1",
+          "CPE2": "CGB-CH-RHA-IP-IZOIW-01-R-1",
+          "CPE1_Status": "up",
+          "CPE2_Status": "down",
+          "timestamp": "Jul 22, 2023 @ 23:48:09.000"
+        },
+        {
+          "sr_no": 10,
+          "sites_name": "China",
+          "location": "Shijiazhuang",
+          "CPE1": "CGB-CH-ROT-RDS-R-1",
+          "CPE2": "CGB-CH-SAT-G-EAS-03-R-1",
+          "CPE1_Status": "up",
+          "CPE2_Status": "down",
+          "timestamp": "Jul 22, 2023 @ 23:47:57.000"
+        },
+        {
+          "sr_no": 11,
+          "sites_name": "China",
+          "location": "Haikou",
+          "CPE1": "CGB-CH-SIO-IP-IZOIW-01-R-1",
+          "CPE2": "CGB-CH-THUN-326-RDS-R-1",
+          "CPE1_Status": "up",
+          "CPE2_Status": "down",
+          "timestamp": "Jul 22, 2023 @ 23:47:32.000"
+        },
+        {
+          "sr_no": 12,
+          "sites_name": "China",
+          "location": "Harbin",
+          "CPE1": "CGB-CH-VIS-G-EAS-03-R-1",
+          "CPE2": "CGB-CH-SIZ-IP-IZOIW-01-R-1",
+          "CPE1_Status": "up",
+          "CPE2_Status": "down",
+          "timestamp": "Jul 22, 2023 @ 23:43:13.000"
+        },
+        {
+          "sr_no": 13,
+          "sites_name": "China",
+          "location": "Changsha",
+          "CPE1": "CGB-CH-CSC-IP-IZOIW-01-R-1",
+          "CPE2": "CGB-CH-RHE-IP-IZOIW-03-R-1",
+          "CPE1_Status": "up",
+          "CPE2_Status": "down",
+          "timestamp": "Jul 22, 2023 @ 23:42:54.000"
+        },
+        {
+          "sr_no": 14,
+          "sites_name": "China",
+          "location": "Changchun",
+          "CPE1": "CGB-CH-ROT-RDS-R-1",
+          "CPE2": "CGB-CH-SAT-G-EAS-03-R-1",
+          "CPE1_Status": "up",
+          "CPE2_Status": "down",
+          "timestamp": "Jul 22, 2023 @ 23:40:21.000"
+        }
+      ]
+    }
+  },
+  {
+    "org": {
+      "title": "Carlsberg India Pvt. Ltd",
+      "data": [
+        {
+          "sr_no": 2,
+          "sites_name": "TCS Thiland",
+          "location": "Thiland",
+          "CPE1": "Device 1",
+          "CPE2": "Device 2",
+          "CPE1_Status": 0,
+          "CPE2_Status": 1,
+          "timestamp": "17912837"
+        }
+      ]
+    }
+  },
+  {
+    "org": {
+      "title": "Carlsberg Malaysia",
+      "data": [
+        {
+          "sr_no": 2,
+          "sites_name": "TCS Thiland",
+          "location": "Thiland",
+          "CPE1": "Device 1",
+          "CPE2": "Device 2",
+          "CPE1_Status": 0,
+          "CPE2_Status": 1,
+          "timestamp": "17912837"
+        }
+      ]
+    }
+  },
+  {
+    "org": {
+      "title": "Carlsberg Polska",
+      "data": [
+        {
+          "sr_no": 2,
+          "sites_name": "TCS Thiland",
+          "location": "Thiland",
+          "CPE1": "Device 1",
+          "CPE2": "Device 2",
+          "CPE1_Status": 0,
+          "CPE2_Status": 1,
+          "timestamp": "17912837"
+        }
+      ]
     }
   }
 ]

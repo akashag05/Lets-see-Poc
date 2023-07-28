@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../../components/Navbar/navbar";
 import Table from "@/components/Table/table";
 import MOCK_DATA from './MOCK_DATA.json';
@@ -6,15 +6,30 @@ import { COLOUMNS } from './COLUMNS'
 import Card from "@/components/Card/card";
 
 const Dashboard = () => {
-  const orgData = MOCK_DATA;
+  const orgDatas = MOCK_DATA;
+  const [index, setIndex] = useState(0);
+  const [data, setData] = useState(orgDatas[index].org.data);
+
+  useEffect(() => {
+    setData(orgDatas[index].org.data);
+  }, [index, orgDatas]);
+
+  const handleCardClick = (i: any) => {
+    setIndex(i);
+  };
+
   return (
     <div>
       <Navbar />
-      <div className="container p-5">
-      {orgData.map((name, i) => (  
-          <Card key={i}/>  
-        ))}  
-        <Table COLOUMNS={COLOUMNS} tableData={MOCK_DATA} />
+      <div className="p-5 w-full">
+        <div className="flex gap-4 mb-4">
+          {orgDatas.map((orgData, i) => (
+            <span key={i}  onClick={() => setIndex(i)}>
+              <Card title={orgData} i={i} currentIndex={index} />
+            </span>
+          ))}
+        </div>
+        <Table COLOUMNS={COLOUMNS} tableData={data} />
       </div>
     </div>
   );

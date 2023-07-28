@@ -47,20 +47,22 @@ const DeviceDetail = () => {
           <Button color="blue">Dashboard</Button>
         </div>
       </Link>
-      <div className="flex justify-evenly items-center">
+      <div className="flex flex-col justify-start px-4">
         <div className="flex w-fit h-fit rounded-xl p-4 m-4 border border-slate-900 font-bold text-xl bg-[#527ba1] text-white">
           <div className="">
             <FaBuildingColumns />
           </div>
           <p className="ml-2">091JUB12311432</p>
         </div>
-        <div className="flex w-fit h-fit rounded-xl p-4 m-4 border border-slate-900 text-xl bg-red-500 text-white">
-          <BsRouterFill />
-          <p className="ml-2">JUB-IND-0783732-01</p>
-        </div>
-        <div className="flex w-fit h-fit rounded-xl p-4 m-4 border border-slate-900 text-xl bg-[#10b981] text-white">
-          <BsRouterFill />
-          <p className="ml-2">JUB-IND-0783732-02</p>
+        <div className="ml-8">
+          <div className="flex w-fit h-fit rounded-xl p-2 m-4 border border-slate-900 text-l bg-red-500 text-white">
+            <BsRouterFill />
+            <p className="ml-2">JUB-IND-0783732-01</p>
+          </div>
+          <div className="flex w-fit h-fit rounded-xl p-2 m-4 border border-slate-900 text-l bg-[#10b981] text-white">
+            <BsRouterFill />
+            <p className="ml-2">JUB-IND-0783732-02</p>
+          </div>
         </div>
       </div>
       <div className="flex justify-end mx-4">
