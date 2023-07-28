@@ -52,16 +52,16 @@ const DeviceDetail = () => {
           <div className="">
             <FaBuildingColumns />
           </div>
-          <p className="ml-2">091JUB12311432</p>
+          <p className="ml-2">CGB-CH-DIE8789</p>
         </div>
         <div className="ml-8">
           <div className="flex w-fit h-fit rounded-xl p-2 m-4 border border-slate-900 text-l bg-red-500 text-white">
             <BsRouterFill />
-            <p className="ml-2">JUB-IND-0783732-01</p>
+            <p className="ml-2">CGB-CH-RIC-316-RDS-R-1</p>
           </div>
           <div className="flex w-fit h-fit rounded-xl p-2 m-4 border border-slate-900 text-l bg-[#10b981] text-white">
             <BsRouterFill />
-            <p className="ml-2">JUB-IND-0783732-02</p>
+            <p className="ml-2">CGB-CH-RIC-316-RDS-R-2</p>
           </div>
         </div>
       </div>
