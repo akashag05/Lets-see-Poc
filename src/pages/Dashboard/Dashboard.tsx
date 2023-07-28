@@ -22,9 +22,11 @@ const Dashboard = () => {
     <div>
       <Navbar />
       <div className="p-5 w-full">
-        <div className="flex gap-4 mb-4" >
+        <div className="flex gap-4 mb-4">
           {orgDatas.map((orgData, i) => (
-            <Card key={1} title={orgData} i={i} currentIndex={index} />
+            <span key={i}  onClick={() => setIndex(i)}>
+              <Card title={orgData} i={i} currentIndex={index} />
+            </span>
           ))}
         </div>
         <Table COLOUMNS={COLOUMNS} tableData={data} />
