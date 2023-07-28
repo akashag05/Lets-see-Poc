@@ -1,6 +1,4 @@
 import Link from "next/link";
-import { AiFillEye } from "react-icons/ai";
-import { BiPencil } from "react-icons/bi";
 
 export const COLOUMNS = [
     {
@@ -9,7 +7,10 @@ export const COLOUMNS = [
     },
     {
         Header: 'Site Name',
-        accessor: 'sites_name'
+        accessor: 'sites_name',
+        Cell: (props: { cell:any,value: string }) => {
+                return <Link href='/DeviceDetails/DeviceDetails'>{props.value}</Link>;
+        },
     },
     {
         Header: 'Location',
