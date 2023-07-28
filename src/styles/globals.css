@@ -17,3 +17,44 @@ table {
   table tr:nth-child(even) {
     background-color: #dddddd;
   }
+
+.card-active{
+  border-bottom: 3px solid rgb(0, 94, 255);
+  background: white;
+}
+
+.device-down{
+  position: relative;
+  /* color: red !important; */
+}
+
+.device-up{
+  position: relative;
+  /* color: rgb(5, 240, 5); */
+}
+
+.device-down::after{
+  content: '🠇';
+  position: absolute;
+  right: -15px;
+  top: 50%;
+  transform: translateY(-50%);
+  /* width: 5px; */
+  /* height: 5px; */
+  border-radius: 50%;
+  color: red;
+  font-size: 20px;
+}
+
+.device-up::after{
+  content: '🠅';
+  position: absolute;
+  right: -15px;
+  top: 50%;
+  transform: translateY(-50%);
+  /* width: 5px; */
+  /* height: 5px; */
+  border-radius: 50%;
+  color: rgb(4, 204, 4);
+  font-size: 20px;
+}

@@ -24,7 +24,7 @@ const Dashboard = () => {
       <div className="p-5 w-full">
         <div className="flex gap-4 mb-4" >
           {orgDatas.map((orgData, i) => (
-            <Card key={1} title={orgData} index={i} />
+            <Card key={1} title={orgData} i={i} currentIndex={index} />
           ))}
         </div>
         <Table COLOUMNS={COLOUMNS} tableData={data} />
