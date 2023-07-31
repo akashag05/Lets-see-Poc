@@ -7,10 +7,7 @@ import {
   useGlobalFilter,
   usePagination,
 } from "react-table";
-import { BiPencil } from "react-icons/bi";
-import { AiFillEye } from "react-icons/ai";
 import { GrNext, GrPrevious } from "react-icons/gr";
-import Link from "next/link";
 import { GlobalFilterTable } from "./GlobalFilterTable";
 
 const Table = (props: any) => {

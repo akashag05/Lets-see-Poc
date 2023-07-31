@@ -1,6 +1,8 @@
+import React, { useEffect, useState } from "react";
+import { Modal } from "@/components/Modal/Modal";
 import Link from "next/link";
 
-export const COLOUMNS = [
+export const COLOUMNS_OLD = [
     {
         Header: 'Sr No',
         accessor: 'sr_no'
@@ -46,6 +48,25 @@ export const COLOUMNS = [
     }
 ]
 
+export const COLOUMNS = [
+    {
+        Header: 'Site Name',
+        accessor: 'site_name',
+        Cell: (props: { cell: any, value: string }) => {
+            return <Link href='/DeviceDetails/DeviceDetails'>{props.value}</Link>;
+        },
+    },
+    {
+        Header: 'Location',
+        accessor: 'location'
+    },
+    {
+        Header: 'Device',
+        accessor: 'device'
+    }
+]
+
+
 export const interfaceColoumns = [
     {
         Header: 'Sr No',
@@ -53,32 +74,41 @@ export const interfaceColoumns = [
     },
     {
         Header: 'Interface Name',
-        accessor: 'interface_name'
+        accessor: 'interface_name',
+        Cell: (props: { row: any, value: string }) => {
+            const [modalOpen, setModalOpen] = React.useState('');
+            
+            return (
+                <>
+                    <Modal title={'Interface - '+props.value} ModalOpen={modalOpen} setModalOpen={setModalOpen} value={props.row.original}/>
+                    <div className="underline cursor-pointer" onClick={() => setModalOpen('xs')}>{props.value}</div>
+                </>
+            );
+        },
     },
     {
         Header: 'Incoming',
-        accessor: 'interface_in',
-        Cell: (props: { row: any, value: string }) => {
-            return (
-                <div>
-                    <div>{props.value}</div>
-                    <div>Discard - {props.row.original.interface_in_discard}</div>
-                    <div>Errors - {props.row.original.interface_in_errors}</div>
-                </div>
-            );
-        },
+        accessor: 'interface_in'
+    },
+    {
+        Header: 'Incoming Discard',
+        accessor: 'interface_in_discard'
+    },
+    {
+        Header: 'Incoming Errors',
+        accessor: 'interface_in_errors'
     },
     {
         Header: 'Outgoing',
-        accessor: 'interface_out',
-        Cell: (props: { row: any, value: string }) => {
-            return (
-                <div>
-                    <div>{props.value}</div>
-                    <div>Discard - {props.row.original.interface_out_discard}</div>
-                    <div>Errors - {props.row.original.interface_out_errors}</div>
-                </div>
-            );
-        },
+        accessor: 'interface_out'
+    },
+    {
+        Header: 'Outgoing Discard',
+        accessor: 'interface_out_discard'
+    },
+    {
+        Header: 'Outgoing Errors',
+        accessor: 'interface_out_errors'
     }
 ]
+
