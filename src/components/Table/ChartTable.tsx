@@ -1,12 +1,13 @@
 import { Card, Typography } from "@material-tailwind/react";
 
-const TABLE_HEAD = ["Minimum", "Maximum", "Average"];
+const TABLE_HEAD = ["Minimum", "Maximum", "Average", "Unit of Measure"];
 
 const TABLE_ROWS = [
   {
     min: "54",
     max: "109",
     avg: "34",
+    um: "%",
   },
 ];
 
@@ -34,7 +35,7 @@ export function ChartTable() {
           </tr>
         </thead>
         <tbody>
-          {TABLE_ROWS.map(({ min, max, avg }, index) => (
+          {TABLE_ROWS.map(({ min, max, avg, um }, index) => (
             <tr key={index} className="even:bg-blue-gray-50/50">
               <td className="p-4">
                 <Typography
@@ -61,6 +62,15 @@ export function ChartTable() {
                   className="font-normal"
                 >
                   {avg}
+                </Typography>
+              </td>
+              <td className="p-4">
+                <Typography
+                  variant="small"
+                  color="blue-gray"
+                  className="font-normal"
+                >
+                  {um}
                 </Typography>
               </td>
             </tr>

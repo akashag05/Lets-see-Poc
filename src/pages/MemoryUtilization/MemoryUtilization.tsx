@@ -1,12 +1,12 @@
 import React from "react";
 import { ChartTable } from "@/components/Table/ChartTable";
-import Chart from "@/components/Highcharts/chart";
+import {MemoryChart} from "@/components/Highcharts/chart";
 
 const MemoryUtilization = () => {
   return (
     <>
       <div className="p-10">
-        <Chart graphID='memory'/>
+        <MemoryChart graphID="memory" kpiName="Memory" />
         <ChartTable />
       </div>
     </>
