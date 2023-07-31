@@ -81,7 +81,7 @@
           "CPE2": "CGB-CH-CSC-IP-IZOIW-01-R-1",
           "CPE1_Status": "up",
           "CPE2_Status": "down",
-          "timestamp": ""
+          "timestamp": "Jul 22, 2023 @ 23:58:21.000"
         },
         {
           "sr_no": 9,
@@ -151,14 +151,64 @@
       "title": "Carlsberg India Pvt. Ltd",
       "data": [
         {
+          "sr_no": 1,
+          "sites_name": "India",
+          "location": "Rajasthan",
+          "CPE1": "CGB-CH-RIC-316-RDS-R-1",
+          "CPE2": "CGB-CH-DIE-IP-IZOIW-01-R-1",
+          "CPE1_Status": "up",
+          "CPE2_Status": "up",
+          "timestamp": "Jul 22, 2023 @ 23:59:53.000"
+        },
+        {
           "sr_no": 2,
-          "sites_name": "TCS Thiland",
-          "location": "Thiland",
-          "CPE1": "Device 1",
-          "CPE2": "Device 2",
-          "CPE1_Status": 0,
-          "CPE2_Status": 1,
-          "timestamp": "17912837"
+          "sites_name": "India",
+          "location": "Maharashtra",
+          "CPE1": "CGB-CH-GIV-IP-IZOIW-01-R-1",
+          "CPE2": "CGB-CH-TAV-G-EAS-03-R-1",
+          "CPE1_Status": "down",
+          "CPE2_Status": "up",
+          "timestamp": "Jul 22, 2023 @ 23:59:30.000"
+        },
+        {
+          "sr_no": 3,
+          "sites_name": "India",
+          "location": "Himachal Pradesh",
+          "CPE1": "CGB-CH-KAI-IP-IZOIW-01-R-1",
+          "CPE2": "CGB-CH-SIZ-IP-IZOIW-01-R-1",
+          "CPE1_Status": "down",
+          "CPE2_Status": "down",
+          "timestamp": "Jul 22, 2023 @ 23:58:21.000"
+        },
+        {
+          "sr_no": 4,
+          "sites_name": "India",
+          "location": "West Bengal",
+          "CPE1": "CGB-CH-RHE-IP-IZOIW-03-R-1",
+          "CPE2": "CGB-CH-RHE-G-IP-IZOIW-R-1",
+          "CPE1_Status": "up",
+          "CPE2_Status": "down",
+          "timestamp": "Jul 22, 2023 @ 23:56:19.000"
+        },
+        {
+          "sr_no": 5,
+          "sites_name": "India",
+          "location": "Patna",
+          "CPE1": "CGB-CH-WIN-IP-IZOIW-01-R-1",
+          "CPE2": "CGB-CH-CSC-IP-IZOIW-03-R-1",
+          "CPE1_Status": "up",
+          "CPE2_Status": "down",
+          "timestamp": "Jul 22, 2023 @ 23:54:54.000"
+        },
+        {
+          "sr_no": 6,
+          "sites_name": "India",
+          "location": "Telangana",
+          "CPE1": "CGB-CH-CRI-RDS-R-1",
+          "CPE2": "CGB-CH-VIS-G-EAS-03-R-1",
+          "CPE1_Status": "up",
+          "CPE2_Status": "down",
+          "timestamp": "Jul 22, 2023 @ 23:52:17.000"
         }
       ]
     }
@@ -168,14 +218,24 @@
       "title": "Carlsberg Malaysia",
       "data": [
         {
+          "sr_no": 1,
+          "sites_name": "Malaysia",
+          "location": "Shah Alam",
+          "CPE1": "CGB-CH-RIC-316-RDS-R-1",
+          "CPE2": "CGB-CH-DIE-IP-IZOIW-01-R-1",
+          "CPE1_Status": "up",
+          "CPE2_Status": "up",
+          "timestamp": "Jul 22, 2023 @ 23:59:53.000"
+        },
+        {
           "sr_no": 2,
-          "sites_name": "TCS Thiland",
-          "location": "Thiland",
-          "CPE1": "Device 1",
-          "CPE2": "Device 2",
-          "CPE1_Status": 0,
-          "CPE2_Status": 1,
-          "timestamp": "17912837"
+          "sites_name": "Malaysia",
+          "location": "Selangor",
+          "CPE1": "CGB-CH-GIV-IP-IZOIW-01-R-1",
+          "CPE2": "CGB-CH-TAV-G-EAS-03-R-1",
+          "CPE1_Status": "down",
+          "CPE2_Status": "up",
+          "timestamp": "Jul 22, 2023 @ 23:59:30.000"
         }
       ]
     }
@@ -185,14 +245,44 @@
       "title": "Carlsberg Polska",
       "data": [
         {
+          "sr_no": 1,
+          "sites_name": "Polska",
+          "location": "Okocim",
+          "CPE1": "CGB-CH-RIC-316-RDS-R-1",
+          "CPE2": "CGB-CH-DIE-IP-IZOIW-01-R-1",
+          "CPE1_Status": "up",
+          "CPE2_Status": "up",
+          "timestamp": "Jul 22, 2023 @ 23:59:53.000"
+        },
+        {
           "sr_no": 2,
-          "sites_name": "TCS Thiland",
-          "location": "Thiland",
-          "CPE1": "Device 1",
-          "CPE2": "Device 2",
-          "CPE1_Status": 0,
-          "CPE2_Status": 1,
-          "timestamp": "17912837"
+          "sites_name": "Polska",
+          "location": "Kasztelan",
+          "CPE1": "CGB-CH-GIV-IP-IZOIW-01-R-1",
+          "CPE2": "CGB-CH-TAV-G-EAS-03-R-1",
+          "CPE1_Status": "down",
+          "CPE2_Status": "up",
+          "timestamp": "Jul 22, 2023 @ 23:59:30.000"
+        },
+        {
+          "sr_no": 3,
+          "sites_name": "Polska",
+          "location": "Okocim",
+          "CPE1": "CGB-CH-KAI-IP-IZOIW-01-R-1",
+          "CPE2": "CGB-CH-SIZ-IP-IZOIW-01-R-1",
+          "CPE1_Status": "down",
+          "CPE2_Status": "down",
+          "timestamp": "Jul 22, 2023 @ 23:58:21.000"
+        },
+        {
+          "sr_no": 4,
+          "sites_name": "Polska",
+          "location": "Piast",
+          "CPE1": "CGB-CH-RHE-IP-IZOIW-03-R-1",
+          "CPE2": "CGB-CH-RHE-G-IP-IZOIW-R-1",
+          "CPE1_Status": "up",
+          "CPE2_Status": "down",
+          "timestamp": "Jul 22, 2023 @ 23:56:19.000"
         }
       ]
     }
