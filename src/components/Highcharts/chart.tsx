@@ -134,66 +134,72 @@ export const Chart: React.FC = (props: any) => {
 };
 
 export const MemoryChart = (props: any) => {
-  const bodyData = {
-    gte: "2023-07-17T00:00:00",
-    lte: "2023-07-27T23:59:59",
-    device: "CGB-CH-THUN-326-RDS-R-1",
-  };
-  let response: any;
   useEffect(() => {
-    const getData = async () => {
-      response = await memoryUtilization(bodyData);
-      console.log("api response in memory", response);
+    const bodyData = {
+      gte: "2023-07-17T00:00:00",
+      lte: "2023-07-27T23:59:59",
+      device: "CGB-CH-THUN-326-RDS-R-1",
     };
-    getData();
+    const fetchChartData = async () => {
+      try {
+        const data = await memoryUtilization(bodyData);
+        // const data = await response.json();
+        console.log("memory data", data);
+        Highcharts.chart("container", {
+          chart: {
+            zoomType: "x",
+            // ... rest of your chart configuration ...
+          },
+          title: {
+            text: "Memory Utilization (%)",
+            // align: "left",
+            y: 40,
+          },
+          xAxis: {
+            type: "datetime",
+          },
+          yAxis: {
+            title: {
+              text: "% rate",
+            },
+          },
+          legend: {
+            enabled: true,
+          },
+          plotOptions: {
+            area: {
+              // ... rest of your plot options ...
+            },
+          },
+          series: [
+            {
+              type: "area",
+              name: "Used Memory",
+              data: data.map((point) => [point[0], point[1]]), 
+            },
+            {
+              type: "line",
+              name: "Free Memory",
+              data: data.map((point) => [point[0], point[2]]), // Sample conversion rate (EUR to GBP)
+            },
+            {
+              type: "line",
+              name: "Total Memory",
+              data: data.map((point) => [point[0], point[3]]), // Sample conversion rate (USD to GBP)
+            },
+          ],
+        });
+      } catch (error) {
+        console.error("Error fetching chart data:", error);
+      }
+    };
+
+    fetchChartData();
   }, []);
 
-  const generateDummyData = () => {
-    const data = [];
-    const startTime = new Date("2023-07-20T00:00:00").getTime();
-    for (let i = 0; i < 100; i++) {
-      const time = startTime + i * 60 * 60 * 100;
-      const value1 = Math.random() * 100;
-      const value2 = Math.random() * 50;
-      const value3 = Math.random() * 75;
-      data.push([time, value1, value2, value3]);
-    }
-    console.log("data", data);
-    return data;
-  };
-
-  Highcharts.setOptions({
-    credits: {
-      enabled: false,
-    },
-  });
-
-  const options = {
-    chart: {
-      type: "spline",
-      zoomType: "x", // Enable zooming along the x-axis (time)
-    },
-    title: {
-      text: `${props.kpiName} Utilization (%)`,
-    },
-    xAxis: {
-      type: "datetime",
-    },
-    yAxis: {
-      title: {
-        text: "Values",
-      },
-    },
-    series: [
-      { name: "Total Memory", data: generateDummyData() },
-      { name: "Used Memory", data: generateDummyData() },
-      { name: "Free Memory", data: generateDummyData() },
-    ],
-  };
-
   return (
-    <div>
-      <HighchartsReact highcharts={Highcharts} options={options} />
-    </div>
+    <figure className="highcharts-figure">
+      <div id="container" />
+    </figure>
   );
 };
