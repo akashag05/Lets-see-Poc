@@ -4,6 +4,7 @@ import Table from "@/components/Table/table";
 // import MOCK_DATA from './MOCK_DATA.json';
 import { COLOUMNS } from '../data coloumns/COLUMNS'
 import Card from "@/components/Card/card";
+import DeviceCard from "@/components/Card/DeviceCard";
 
 const Dashboard = () => {
   // const orgDatas = MOCK_DATA;
@@ -41,6 +42,7 @@ const Dashboard = () => {
             </span>
             ))}
           </div> */}
+
         <Table COLOUMNS={COLOUMNS} tableData={data} />
       </div>
     </div>

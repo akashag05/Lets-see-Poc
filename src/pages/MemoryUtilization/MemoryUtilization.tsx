@@ -1,16 +1,16 @@
 import React from "react";
-import { Chart } from "@/components/Highcharts/chart";
 import { ChartTable } from "@/components/Table/ChartTable";
+import {MemoryChart} from "@/components/Highcharts/chart";
 
-const CpuUtilozation = () => {
+const MemoryUtilization = () => {
   return (
     <>
       <div className="p-10">
-        <Chart graphID="cpu" kpiName="CPU" />
+        <MemoryChart graphID="memory" kpiName="Memory" />
         <ChartTable />
       </div>
     </>
   );
 };
 
-export default CpuUtilozation;
+export default MemoryUtilization;

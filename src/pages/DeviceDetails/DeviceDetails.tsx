@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Tabs,
   TabsHeader,
@@ -15,8 +15,12 @@ import CpuUtilozation from "../CpuUtilization/CpuUtilization";
 import Picker from "@/components/Picker/Picker";
 import { SwitchLabel } from "@/components/Toggle/Toggle";
 import Interface from "@/components/Interface/Interface";
+import MemoryUtilization from "../MemoryUtilization/MemoryUtilization";
 
 const DeviceDetail = () => {
+  const [DeviceToggle, setDeviceToggle] = useState(false);
+  const [SiteToggle, setSiteToggle] = useState(false);
+
   const data = [
     {
       label: "CPU",
@@ -40,6 +44,23 @@ const DeviceDetail = () => {
     },
   ];
 
+  const SiteToggleFunc = () => {
+    if (SiteToggle == true || DeviceToggle == true) {
+      setSiteToggle(false);
+      setDeviceToggle(false);
+    } else {
+      setSiteToggle(true);
+      setDeviceToggle(true);
+    }
+  };
+  const DeviceToggleFunc = () => {
+    if (DeviceToggle == true) {
+      setDeviceToggle(false);
+    } else {
+      setDeviceToggle(true);
+    }
+  };
+
   return (
     <div>
       <Navbar />
@@ -49,56 +70,64 @@ const DeviceDetail = () => {
         </div>
       </Link>
       <div className="flex flex-col justify-start px-4">
-        <div className="flex w-fit h-fit rounded-xl p-4 m-4 border border-slate-900 font-bold text-xl bg-[#527ba1] text-white">
-          <div className="">
-            <FaBuildingColumns />
+        <button>
+          <div className="flex w-fit h-fit rounded-xl p-4 m-4 border border-slate-900 font-bold text-xl bg-[#527ba1] text-white">
+            <div className="">
+              <FaBuildingColumns />
+            </div>
+            <p className="ml-2">CGB-CH-RIC7879</p>
           </div>
-          <p className="ml-2">091JUB12311432</p>
-        </div>
-        <div className="ml-8">
-          <div className="flex w-fit h-fit rounded-xl p-2 m-4 border border-slate-900 text-l bg-red-500 text-white">
+        </button>
+        {/* {SiteToggle && ( */}
+        <div className=" flex ml-8">
+          {/* <div
+            className={`flex w-fit h-fit rounded-xl p-2 m-4 text-l bg-red-500 text-white cursor-pointer${
+              DeviceToggle ? "shadow-2xl shadow-red-900" : ""
+            }`}
+            // onClick={() => DeviceToggleFunc()}
+          >
             <BsRouterFill />
-            <p className="ml-2">JUB-IND-0783732-01</p>
-          </div>
-          <div className="flex w-fit h-fit rounded-xl p-2 m-4 border border-slate-900 text-l bg-[#10b981] text-white">
+            <p className="ml-2">CGB-CH-RIC-316-RDS-R-1</p>
+          </div> */}
+          <div className="flex w-fit h-fit rounded-xl p-2 m-4 border border-slate-900 text-l bg-[#10b981] text-white shadow-xl shadow-green-900 cursor-pointer">
             <BsRouterFill />
-            <p className="ml-2">JUB-IND-0783732-02</p>
+            <p className="ml-2">CGB-CH-DIE-IP-IZOIW-01-R-1</p>
           </div>
         </div>
+        {/* )} */}
       </div>
-      <div className="flex justify-end mx-4">
-        <Picker />
-        <div className="ml-4">
-          <SwitchLabel />
+      {/* {DeviceToggle && ( */}
+      <div>
+        <div className="flex justify-end mx-4">
+          <Picker />
+          <div className="ml-4">
+            <SwitchLabel />
+          </div>
         </div>
-      </div>
-      <div className="p-4">
-        <Tabs value="cpu" orientation="vertical">
-          <TabsHeader className="w-32">
-            {data.map(({ label, value }) => (
-              <Tab key={value} value={value} className="h-20">
-                {label}
-              </Tab>
-            ))}
-          </TabsHeader>
-          <TabsBody>
-            {/* {data.map(({ value, desc }) => (
-              <TabPanel key={value} value={value} className="py-0">
-                {desc}
+        <div className="p-4">
+          <Tabs value="cpu" orientation="vertical">
+            <TabsHeader className="w-32">
+              {data.map(({ label, value }) => (
+                <Tab key={value} value={value} className="h-20">
+                  {label}
+                </Tab>
+              ))}
+            </TabsHeader>
+            <TabsBody>
+              <TabPanel key="cpu" value="cpu">
+                <CpuUtilozation />
               </TabPanel>
-            ))} */}
-            <TabPanel key="cpu" value="cpu">
-              <CpuUtilozation />
-            </TabPanel>
-            <TabPanel key="memory" value="memory">
-              memory
-            </TabPanel>
-            <TabPanel key="interface" value="interface">
-              <Interface />
-            </TabPanel>
-          </TabsBody>
-        </Tabs>
+              <TabPanel key="memory" value="memory">
+                <MemoryUtilization />
+              </TabPanel>
+              <TabPanel key="interface" value="interface">
+                <Interface />
+              </TabPanel>
+            </TabsBody>
+          </Tabs>
+        </div>
       </div>
+      {/* )} */}
     </div>
   );
 };

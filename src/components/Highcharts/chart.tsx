@@ -3,22 +3,28 @@ import Highcharts from "highcharts";
 import HighchartsExporting from "highcharts/modules/exporting";
 import HighchartsExportData from "highcharts/modules/export-data";
 import HighchartsAccessibility from "highcharts/modules/accessibility";
-import { ChartTable } from "../Table/ChartTable";
+import { HighchartsReact } from "highcharts-react-official";
+import { cpuUtilization } from "@/api/cpuUtilization";
+import { memoryUtilization } from "@/api/memoryUtilization";
 
 HighchartsExporting(Highcharts);
 HighchartsExportData(Highcharts);
 HighchartsAccessibility(Highcharts);
 
-const Chart: React.FC = () => {
+export const Chart: React.FC = (props: any) => {
+  const bodyData = {
+    gte: "2023-07-17T00:00:00",
+    lte: "2023-07-27T23:59:59",
+    device: "CGB-CH-THUN-326-RDS-R-1",
+  };
+  let response;
   useEffect(() => {
     const fetchChartData = async () => {
+      response = await cpuUtilization(bodyData);
+      // setReguData(response);
+      console.log("API response ", response);
       try {
-        const response = await fetch(
-          "https://cdn.jsdelivr.net/gh/highcharts/highcharts@v10.3.3/samples/data/usdeur.json"
-        );
-        const data = await response.json();
-
-        Highcharts.chart("container", {
+        Highcharts.chart("container" + props.graphID, {
           chart: {
             zoomType: "x",
             events: {
@@ -56,28 +62,20 @@ const Chart: React.FC = () => {
             },
           },
           title: {
-            text: "USD to EUR exchange rate over time",
-            align: "left",
-            y: 40,
-          },
-          subtitle: {
-            text:
-              document.ontouchstart === undefined
-                ? "Click and drag in the plot area to zoom in"
-                : "Pinch the chart to zoom in",
-            align: "left",
-            y: 60,
+            text: `${props.kpiName} Utilization (%)`,
+            // align: "top",
+            // y: 40,
           },
           xAxis: {
             type: "datetime",
           },
           yAxis: {
             title: {
-              text: "Exchange rate",
+              text: "% rate",
             },
           },
           legend: {
-            enabled: false,
+            enabled: true,
           },
           plotOptions: {
             area: {
@@ -113,8 +111,8 @@ const Chart: React.FC = () => {
           series: [
             {
               type: "area",
-              name: "USD to EUR",
-              data: data,
+              name: `${props.kpiName} 1`,
+              data: response,
             },
           ],
         });
@@ -129,11 +127,73 @@ const Chart: React.FC = () => {
   return (
     <div>
       <figure className="highcharts-figure my-4">
-        <div id="container" />
+        <div id={"container" + props.graphID} />
       </figure>
-      <ChartTable />
     </div>
   );
 };
 
-export default Chart;
+export const MemoryChart = (props: any) => {
+  const bodyData = {
+    gte: "2023-07-17T00:00:00",
+    lte: "2023-07-27T23:59:59",
+    device: "CGB-CH-THUN-326-RDS-R-1",
+  };
+  let response: any;
+  useEffect(() => {
+    const getData = async () => {
+      response = await memoryUtilization(bodyData);
+      console.log("api response in memory", response);
+    };
+    getData();
+  }, []);
+
+  const generateDummyData = () => {
+    const data = [];
+    const startTime = new Date("2023-07-20T00:00:00").getTime();
+    for (let i = 0; i < 100; i++) {
+      const time = startTime + i * 60 * 60 * 100;
+      const value1 = Math.random() * 100;
+      const value2 = Math.random() * 50;
+      const value3 = Math.random() * 75;
+      data.push([time, value1, value2, value3]);
+    }
+    console.log("data", data);
+    return data;
+  };
+
+  Highcharts.setOptions({
+    credits: {
+      enabled: false,
+    },
+  });
+
+  const options = {
+    chart: {
+      type: "spline",
+      zoomType: "x", // Enable zooming along the x-axis (time)
+    },
+    title: {
+      text: `${props.kpiName} Utilization (%)`,
+    },
+    xAxis: {
+      type: "datetime",
+    },
+    yAxis: {
+      title: {
+        text: "Values",
+      },
+    },
+    series: [
+      { name: "Total Memory", data: generateDummyData() },
+      { name: "Used Memory", data: generateDummyData() },
+      { name: "Free Memory", data: generateDummyData() },
+    ],
+  };
+
+  return (
+    <div>
+      <HighchartsReact highcharts={Highcharts} options={options} />
+    </div>
+  );
+};
