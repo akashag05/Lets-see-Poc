@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../../components/Navbar/navbar";
 import Table from "@/components/Table/table";
 // import MOCK_DATA from './MOCK_DATA.json';
-import { COLOUMNS } from '../data coloumns/COLUMNS'
+import { COLOUMNS } from "../data coloumns/COLUMNS";
 import Card from "@/components/Card/card";
 import DeviceCard from "@/components/Card/DeviceCard";
 
@@ -14,18 +14,15 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchTabletData = async () => {
       try {
-        const response = await fetch(
-          "http://95.217.191.79:8000/allDevices" 
-        );
+        const response = await fetch("http://95.217.191.79:8000/allDevices");
         const data = await response.json();
-        setData(data.data)
+        setData(data.data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
-    }
-    fetchTabletData()
+    };
+    fetchTabletData();
   }, []);
-
 
   // const handleCardClick = (i: any) => {
   //   setIndex(i);
@@ -42,7 +39,6 @@ const Dashboard = () => {
             </span>
             ))}
           </div> */}
-
         <Table COLOUMNS={COLOUMNS} tableData={data} />
       </div>
     </div>
