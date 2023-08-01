@@ -66,10 +66,10 @@ const Table = (props: any) => {
         <tbody {...getTableBodyProps}>
           {page.map((row: any) => {
             prepareRow(row);
+            // console.log("row data", row.original);
             return (
               <tr {...row.getRowProps()}>
                 {row.cells.map((cell: any) => {
-                  console.log("cell value", cell);
                   return (
                     <td
                       {...cell.getCellProps({

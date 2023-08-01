@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 :root {
-  --primary-color: rgb(20, 247, 20);
-  --header-bg-color: rgb(78, 222, 78);
-  --table-th-bg-color: rgb(154, 255, 154);
+  --primary-color: #e0f7fa;
+  --header-bg-color: #e0f7fa;
+  --table-th-bg-color: #e0f7fa;
 }
 
 .header {

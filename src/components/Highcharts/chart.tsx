@@ -4,6 +4,7 @@ import HighchartsExporting from "highcharts/modules/exporting";
 import HighchartsExportData from "highcharts/modules/export-data";
 import HighchartsAccessibility from "highcharts/modules/accessibility";
 import { HighchartsReact } from "highcharts-react-official";
+import moment from "moment";
 import { cpuUtilization } from "@/api/cpuUtilization";
 import { memoryUtilization } from "@/api/memoryUtilization";
 
@@ -12,11 +13,14 @@ HighchartsExportData(Highcharts);
 HighchartsAccessibility(Highcharts);
 
 export const Chart: React.FC = (props: any) => {
+  console.log("time in chart", props.gteTime);
+  const currentTime = moment();
   const bodyData = {
-    gte: "2023-07-17T00:00:00",
-    lte: "2023-07-27T23:59:59",
-    device: "CGB-CH-THUN-326-RDS-R-1",
+    lte: currentTime.format("YYYY-MM-DDTHH:mm:ss"),
+    gte: props.gteTime,
+    device: props.device,
   };
+  console.log("bodyData", bodyData);
   let response;
   useEffect(() => {
     const fetchChartData = async () => {
@@ -122,7 +126,7 @@ export const Chart: React.FC = (props: any) => {
     };
 
     fetchChartData();
-  }, []);
+  }, [bodyData]);
 
   return (
     <div>
@@ -136,9 +140,9 @@ export const Chart: React.FC = (props: any) => {
 export const MemoryChart = (props: any) => {
   useEffect(() => {
     const bodyData = {
-      gte: "2023-07-17T00:00:00",
-      lte: "2023-07-27T23:59:59",
-      device: "CGB-CH-THUN-326-RDS-R-1",
+      lte: "now-100d",
+      gte: "now",
+      device: "CGB-CH-RHE-G-IP-IZOIW-R-1",
     };
     const fetchChartData = async () => {
       try {
@@ -175,7 +179,7 @@ export const MemoryChart = (props: any) => {
             {
               type: "area",
               name: "Used Memory",
-              data: data.map((point) => [point[0], point[1]]), 
+              data: data.map((point) => [point[0], point[1]]),
             },
             {
               type: "line",
