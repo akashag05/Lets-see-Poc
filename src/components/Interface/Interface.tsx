@@ -1,9 +1,9 @@
-import React from "react";
-import Table from "../Table/table";
-import { interfaceColoumns } from "@/pages/data coloumns/COLUMNS";
-import MOCK_DATA from "./MOCK_DATA.json";
-import PieChart from "../Highcharts/pieChart";
-import { Modal } from "../Modal/Modal";
+import React, { useEffect } from 'react'
+import Table from '../Table/table'
+import { interfaceColoumns } from '@/pages/data coloumns/COLUMNS'
+import MOCK_DATA from './MOCK_DATA.json'
+import PieChart from '../Highcharts/pieChart'
+import { Modal } from '../Modal/Modal'
 import {
   Button,
   Dialog,
@@ -11,13 +11,33 @@ import {
   DialogBody,
   DialogFooter,
 } from "@material-tailwind/react";
+import { interfaceData } from '@/api/interface'
 
 function Interface() {
-  return (
-    <div className="ml-12">
-      <Table COLOUMNS={interfaceColoumns} tableData={MOCK_DATA}></Table>
-    </div>
-  );
+
+    const bodyData = {
+        gte: "2023-07-17T00:00:00",
+        lte: "2023-07-27T23:59:59",
+        device: "CGB-CH-THUN-326-RDS-R-1",
+    };
+    let response;
+
+    useEffect(() => {
+        const fetchChartData = async () => {
+            response = await interfaceData(bodyData);
+            console.log(response)
+        }
+        fetchChartData();
+    }, [])
+
+    // useEffect(() => {
+    //     return
+    // }, [response])
+
+
+    return (
+        <Table COLOUMNS={interfaceColoumns} tableData={MOCK_DATA.data}></Table>
+    )
 }
 
 export default Interface;

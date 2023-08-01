@@ -8,9 +8,9 @@ import moment from "moment";
 import { cpuUtilization } from "@/api/cpuUtilization";
 import { memoryUtilization } from "@/api/memoryUtilization";
 
-HighchartsExporting(Highcharts);
-HighchartsExportData(Highcharts);
-HighchartsAccessibility(Highcharts);
+// HighchartsExporting(Highcharts);
+// HighchartsExportData(Highcharts);
+// HighchartsAccessibility(Highcharts);
 
 export const Chart: React.FC = (props: any) => {
   console.log("time in chart", props.gteTime);
