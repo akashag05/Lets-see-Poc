@@ -80,7 +80,7 @@ export const interfaceColoumns = [
             
             return (
                 <>
-                    <Modal title={'Interface - '+props.value} ModalOpen={modalOpen} setModalOpen={setModalOpen} value={props.row.original}/>
+                    <Modal title={'Interface - '+props.value} interfaceName={props.value} ModalOpen={modalOpen} setModalOpen={setModalOpen} value={props.row.original}/>
                     <div className="underline cursor-pointer" onClick={() => setModalOpen('xs')}>{props.value}</div>
                 </>
             );

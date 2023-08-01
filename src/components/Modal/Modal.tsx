@@ -6,6 +6,7 @@ import {
   DialogBody,
   DialogFooter,
 } from "@material-tailwind/react";
+
 import Link from "next/link";
 import PieChartComponent from "../Highcharts/pieChart";
 
@@ -21,7 +22,6 @@ export function Modal(props: any) {
     setSize(props.ModalOpen)
 
   }, [props.ModalOpen])
-console.log(props.value)
   return (
     <>
       <Dialog
@@ -33,6 +33,15 @@ console.log(props.value)
       >
         <DialogHeader>{props.title}</DialogHeader>
         <DialogBody divider>
+          {/* <FormControl component="fieldset">
+            <FormLabel component="legend">Gender</FormLabel>
+            <RadioGroup aria-label="gender" name="gender1" value={value} onChange={handleChange}>
+              <FormControlLabel value="female" control={<Radio />} label="Female" />
+              <FormControlLabel value="male" control={<Radio />} label="Male" />
+              <FormControlLabel value="other" control={<Radio />} label="Other" />
+              <FormControlLabel value="disabled" disabled control={<Radio />} label="(Disabled option)" />
+            </RadioGroup>
+          </FormControl> */}
           <PieChartComponent data={props.value} />
         </DialogBody>
         <DialogFooter>
@@ -44,7 +53,7 @@ console.log(props.value)
           >
             <span>Cancel</span>
           </Button>
-          <Link href="/InterfaceChart/InterfaceChart" target="blank">
+          <Link href={"/InterfaceChart/InterfaceChart?interface="+props.interfaceName} target="blank">
             <Button
               variant="gradient"
               color="green"

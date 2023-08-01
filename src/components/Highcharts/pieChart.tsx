@@ -10,7 +10,7 @@ function PieChartComponent (props:any) {
       type: "pie"
     },
     title: {
-      text: ""
+      text: "interface"
     },
     credits: {
       enabled: false
@@ -43,12 +43,14 @@ function PieChartComponent (props:any) {
         },
         data: [
           {
+            name: 'incoming',
             y: 9,
-            sliced: true
+            sliced: false
           },
           {
+            name: 'outgoing',
             y: 7,
-            sliced: true
+            sliced: false
           }
         ]
       }
