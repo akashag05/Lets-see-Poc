@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Modal } from "@/components/Modal/Modal";
 import Link from "next/link";
 
+let length = 0;
+const units = ['bytes', 'Kb', 'Mb', 'Gb', 'Tb', 'Pb', 'Eb', 'Zb', 'Yb'];
+
 export const COLOUMNS_OLD = [
     {
         Header: 'Sr No',
@@ -69,46 +72,150 @@ export const COLOUMNS = [
 
 export const interfaceColoumns = [
     {
-        Header: 'Sr No',
-        accessor: 'sr_no'
-    },
-    {
         Header: 'Interface Name',
-        accessor: 'interface_name',
+        accessor: 'interface',
         Cell: (props: { row: any, value: string }) => {
             const [modalOpen, setModalOpen] = React.useState('');
-            
+
             return (
                 <>
-                    <Modal title={'Interface - '+props.value} ModalOpen={modalOpen} setModalOpen={setModalOpen} value={props.row.original}/>
-                    <div className="underline cursor-pointer" onClick={() => setModalOpen('xs')}>{props.value}</div>
+                    <Modal title={'Interface - ' + props.value} interfaceName={props.value} ModalOpen={modalOpen} setModalOpen={setModalOpen} value={props.row.original} />
+                    <div className="underline cursor-pointer" onClick={() => setModalOpen('xl')}>{props.value}</div>
                 </>
             );
         },
     },
     {
-        Header: 'Incoming',
-        accessor: 'interface_in'
+        Header: () => {
+            return (
+                <>
+                    <div>In Traffic</div>
+                    <small>avg ({units[length]}/s)</small>
+                </>
+            )
+        },
+        accessor: 'average_incoming',
+        Cell: (props: { row: any, value: string }) => {
+            function niceBytes(x:any) {
+
+                let l=length, n = parseInt(x, 10) || 0;
+                if(!length){
+                    while (n >= 1024 && ++l) {
+                        n = n / 1024;
+                    }
+                }
+
+                else{
+                    for (let i = 0; i < length; i++) {
+                        n = n / 1024;
+                    }
+                    while (n >= 1024 && ++l) {
+                        n = n / 1024;
+                    }
+                }
+                length = Math.max(l, length)
+
+                return (n.toFixed(2));
+                // return (n.toFixed(n < 10 && l > 0 ? 1 : 0));
+
+            }
+            let val = niceBytes(props.value);
+            return (
+                <>
+                    <div>{val || (val != '0' ? '-' : '0')}</div>
+                </>
+            );
+        },
     },
     {
-        Header: 'Incoming Discard',
-        accessor: 'interface_in_discard'
+        Header: () => {
+            return (
+                <>
+                    <div>Out Traffic</div>
+                    <small>avg ({units[length]}/s)</small>
+                </>
+            )
+        },
+        accessor: 'average_outgoing',
+        Cell: (props: { row: any, value: string }) => {
+            function niceBytes(x:any) {
+
+                let l=length, n = parseInt(x, 10) || 0;
+                if(!length){
+                    while (n >= 1024 && ++l) {
+                        n = n / 1024;
+                    }
+                }
+
+                else{
+                    for (let i = 0; i < length; i++) {
+                        n = n / 1024;
+                    }
+                    while (n >= 1024 && ++l) {
+                        n = n / 1024;
+                    }
+                }
+
+                length = Math.max(l, length)
+
+                return (n.toFixed(2));
+                // return (n.toFixed(n < 10 && l > 0 ? 1 : 0));
+
+            }
+            let val = niceBytes(props.value);
+            return (
+                <>
+                    <div>{val || (val != '0' ? '-' : '0')}</div>
+                </>
+            );
+        },
     },
     {
-        Header: 'Incoming Errors',
-        accessor: 'interface_in_errors'
+        Header: 'In Errors',
+        accessor: 'average_incoming_errors',
+        Cell: (props: { row: any, value: string }) => {
+            return (
+                <>
+                    <div>{props.value || (props.value != '0' ? '-' : '0')}</div>
+                </>
+            );
+        },
     },
     {
-        Header: 'Outgoing',
-        accessor: 'interface_out'
+        Header: 'Out Errors',
+        accessor: 'average_outgoing_errors',
+        Cell: (props: { row: any, value: string }) => {
+            return (
+                <>
+                    <div>{props.value || (props.value != '0' ? '-' : '0')}</div>
+                </>
+            );
+        },
     },
     {
-        Header: 'Outgoing Discard',
-        accessor: 'interface_out_discard'
+        Header: 'In Discard',
+        accessor: 'average_incoming_discards',
+        Cell: (props: { row: any, value: string }) => {
+            return (
+                <>
+                    <div>{props.value || (props.value != '0' ? '-' : '0')}</div>
+                </>
+            );
+        },
     },
     {
-        Header: 'Outgoing Errors',
-        accessor: 'interface_out_errors'
-    }
+        Header: 'Out Discard',
+        accessor: 'average_outgoing_discards',
+        Cell: (props: { row: any, value: string }) => {
+            return (
+                <>
+                    <div>{props.value || (props.value != '0' ? '-' : '0')}</div>
+                </>
+            );
+        },
+    },
+    // {
+    //     Header: 'avg rate' /sec min max in headers
+    // }
 ]
 

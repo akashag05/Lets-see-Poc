@@ -7,9 +7,9 @@ import { HighchartsReact } from "highcharts-react-official";
 import { cpuUtilization } from "@/api/cpuUtilization";
 import { memoryUtilization } from "@/api/memoryUtilization";
 
-HighchartsExporting(Highcharts);
-HighchartsExportData(Highcharts);
-HighchartsAccessibility(Highcharts);
+// HighchartsExporting(Highcharts);
+// HighchartsExportData(Highcharts);
+// HighchartsAccessibility(Highcharts);
 
 export const Chart: React.FC = (props: any) => {
   const bodyData = {
