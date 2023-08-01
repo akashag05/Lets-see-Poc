@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../../components/Navbar/navbar";
 import Table from "@/components/Table/table";
-// import MOCK_DATA from './MOCK_DATA.json';
-import { COLOUMNS } from '../data coloumns/COLUMNS'
+import MOCK_DATA from "./MOCK_DATA.json";
+import { COLOUMNS } from "../data coloumns/COLUMNS";
 import Card from "@/components/Card/card";
+import DeviceCard from "@/components/Card/DeviceCard";
 
 const Dashboard = () => {
   // const orgDatas = MOCK_DATA;
@@ -36,11 +37,54 @@ const Dashboard = () => {
       <div className="p-5 w-full">
         {/* <div className="flex gap-4 mb-4">
           {orgDatas.map((orgData, i) => (
-            <span key={i}  onClick={() => setIndex(i)}>
-            <Card title={orgData} i={i} currentIndex={index} />
+            <span key={i} onClick={() => setIndex(i)}>
+              <Card title={orgData} i={i} currentIndex={index} />
             </span>
-            ))}
-          </div> */}
+          ))}
+        </div>
+        {/* <h2>Device List</h2>
+        <div className="flex flex-wrap justify-between items-center">
+          <DeviceCard />
+          <DeviceCard />
+          <DeviceCard />
+          <DeviceCard />
+          <DeviceCard />
+          <DeviceCard />
+          <DeviceCard />
+          <DeviceCard />
+          <DeviceCard />
+          <DeviceCard />
+          <DeviceCard />
+          <DeviceCard />
+          <DeviceCard />
+          <DeviceCard />
+          <DeviceCard />
+          <DeviceCard />
+          <DeviceCard />
+          <DeviceCard />
+          <DeviceCard />
+          <DeviceCard />
+          <DeviceCard />
+          <DeviceCard />
+          <DeviceCard />
+          <DeviceCard />
+          <DeviceCard />
+          <DeviceCard />
+          <DeviceCard />
+          <DeviceCard />
+          <DeviceCard />
+          <DeviceCard />
+          <DeviceCard />
+          <DeviceCard />
+          <DeviceCard />
+          <DeviceCard />
+          <DeviceCard />
+          <DeviceCard />
+          <DeviceCard />
+          <DeviceCard />
+          <DeviceCard />
+          <DeviceCard />
+        </div> */}
         <Table COLOUMNS={COLOUMNS} tableData={data} />
       </div>
     </div>

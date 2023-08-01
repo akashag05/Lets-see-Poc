@@ -2,50 +2,51 @@
 @tailwind components;
 @tailwind utilities;
 
-:root{
+:root {
   --primary-color: rgb(20, 247, 20);
   --header-bg-color: rgb(78, 222, 78);
   --table-th-bg-color: rgb(154, 255, 154);
 }
 
-.header{
+.header {
   background: var(--header-bg-color);
 }
 
 table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-  }
-  table th{
-    background: var(--table-th-bg-color);
-  }
-  
-  table td, table th {
-    border: 1px solid #dddddd;
-    text-align: center;
-    padding: 8px;
-  }
-  
-  table tr:nth-child(even) {
-    background-color: #dddddd;
-  }
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+table th {
+  background: var(--table-th-bg-color);
+}
 
-.card-active{
+table td,
+table th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+}
+
+table tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.card-active {
   border-bottom: 3px solid var(--primary-color);
   background: white;
 }
 
-.device-down{
+.device-down {
   position: relative;
 }
 
-.device-up{
+.device-up {
   position: relative;
 }
 
-.device-down::after{
-  content: '🠇';
+.device-down::after {
+  content: "🠇";
   position: absolute;
   right: -15px;
   top: 50%;
@@ -55,8 +56,8 @@ table {
   font-size: 20px;
 }
 
-.device-up::after{
-  content: '🠅';
+.device-up::after {
+  content: "🠅";
   position: absolute;
   right: -15px;
   top: 50%;
@@ -66,7 +67,7 @@ table {
   font-size: 20px;
 }
 
-.user-profile-menu{
+.user-profile-menu {
   position: absolute;
   right: 0;
   top: 3rem;
@@ -77,14 +78,17 @@ table {
   transition: height 0.5s 1.5s ease, opacity 0.5s 1.5s ease, top 0.5s 1.5s ease;
 }
 
-.user-profile{
+.user-profile {
   position: relative;
   height: 100%;
 }
 
-.user-profile:hover .user-profile-menu{
+.user-profile:hover .user-profile-menu {
   top: 3.5rem;
   opacity: 1;
   height: fit-content;
   transition: height 0.5s ease, opacity 0.5s ease, top 0.25s ease;
+}
+.highcharts-credits .highcharts-logo {
+  display: none;
 }
