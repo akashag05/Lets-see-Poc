@@ -1,4 +1,4 @@
-import PieChart from '@/components/Highcharts/pieChart'
+import PieChartComponent from '@/components/Highcharts/pieChart'
 import Navbar from "../../components/Navbar/navbar";
 import React from 'react'
 
@@ -8,7 +8,7 @@ function InterfaceChart() {
      <Navbar />
      <div className="p-5 w-full">
        <div className="flex gap-4 mb-4">
-        <PieChart/>
+        <PieChartComponent/>
        </div>
      </div>
    </div>
