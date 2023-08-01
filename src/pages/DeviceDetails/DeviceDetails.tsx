@@ -62,14 +62,14 @@ const DeviceDetail = () => {
   };
 
   return (
-    <div>
+    <div className="relative">
       <Navbar />
       <Link href="/Dashboard/Dashboard">
         <div className="m-2">
           <Button color="blue">Dashboard</Button>
         </div>
       </Link>
-      <div className="flex flex-col justify-start px-4">
+      <div className="flex flex-col justify-start px-4 sticky top-0 z-10 bg-white">
         <button>
           <div className="flex w-fit h-fit rounded-xl p-4 m-4 border border-slate-900 font-bold text-xl bg-[#527ba1] text-white">
             <div className="">
@@ -78,7 +78,6 @@ const DeviceDetail = () => {
             <p className="ml-2">CGB-CH-RIC7879</p>
           </div>
         </button>
-        {/* {SiteToggle && ( */}
         <div className=" flex ml-8">
           {/* <div
             className={`flex w-fit h-fit rounded-xl p-2 m-4 text-l bg-red-500 text-white cursor-pointer${
@@ -94,26 +93,24 @@ const DeviceDetail = () => {
             <p className="ml-2">CGB-CH-DIE-IP-IZOIW-01-R-1</p>
           </div>
         </div>
-        {/* )} */}
-      </div>
-      {/* {DeviceToggle && ( */}
-      <div>
         <div className="flex justify-end mx-4">
           <Picker />
           <div className="ml-4">
             <SwitchLabel />
           </div>
         </div>
+      </div>
+      <div >
         <div className="p-4">
           <Tabs value="cpu" orientation="vertical">
-            <TabsHeader className="w-32">
+            <TabsHeader className="w-32 fixed left-0 z-10">
               {data.map(({ label, value }) => (
                 <Tab key={value} value={value} className="h-20">
                   {label}
                 </Tab>
               ))}
             </TabsHeader>
-            <TabsBody>
+            <TabsBody className="pl-16">
               <TabPanel key="cpu" value="cpu">
                 <CpuUtilozation />
               </TabPanel>
@@ -127,7 +124,6 @@ const DeviceDetail = () => {
           </Tabs>
         </div>
       </div>
-      {/* )} */}
     </div>
   );
 };
