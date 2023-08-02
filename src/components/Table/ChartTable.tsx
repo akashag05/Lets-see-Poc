@@ -11,15 +11,9 @@ const TABLE_ROWS = [
   },
 ];
 
-const TABLE_HEAD_USAGE = [
-  "Indices",
-  "Minimum",
-  "Maximum",
-  "Average",
-  "Unit of Measure",
-];
+const TABLE_HEAD_INTERFACE = ["Indices","Minimum", "Maximum", "Average", "Unit of Measure"];
 
-const TABLE_ROWS_USAGE = [
+const TABLE_ROWS_INTERFACE = [
   {
     indice: "Incoming",
     min: "54",
@@ -34,9 +28,6 @@ const TABLE_ROWS_USAGE = [
     avg: "50",
     um: "Mbps",
   },
-];
-
-const TABLE_ROWS_Error = [
   {
     indice: "Incoming Error",
     min: "54",
@@ -138,14 +129,14 @@ export function ChartTable(props: any) {
   );
 }
 
-export function UsageChartTable() {
+export function InterfaceChartTable() {
   return (
     <div className="h-auto w-full">
       <h2>Calculated Data from Chart</h2>
       <table className="w-full min-w-max table-auto text-left">
         <thead>
           <tr>
-            {TABLE_HEAD_USAGE.map((head) => (
+            {TABLE_HEAD_INTERFACE.map((head) => (
               <th
                 key={head}
                 className="border-b border-blue-gray-100 bg-blue-gray-50 p-4"
@@ -162,7 +153,7 @@ export function UsageChartTable() {
           </tr>
         </thead>
         <tbody>
-          {TABLE_ROWS_USAGE.map(({ indice, min, max, avg, um }, index) => (
+          {TABLE_ROWS_INTERFACE.map(({ indice,min, max, avg, um }, index) => (
             <tr key={index} className="even:bg-blue-gray-50/50">
               <td className="p-4">
                 <Typography
@@ -217,81 +208,3 @@ export function UsageChartTable() {
   );
 }
 
-export function ErrorDiscardChartTable() {
-  return (
-    <div className="h-auto w-full">
-      <h2>Calculated Data from Chart</h2>
-      <table className="w-full min-w-max table-auto text-left">
-        <thead>
-          <tr>
-            {TABLE_HEAD_USAGE.map((head) => (
-              <th
-                key={head}
-                className="border-b border-blue-gray-100 bg-blue-gray-50 p-4"
-              >
-                <Typography
-                  variant="small"
-                  color="blue-gray"
-                  className="font-normal leading-none opacity-70"
-                >
-                  {head}
-                </Typography>
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {TABLE_ROWS_Error.map(({ indice, min, max, avg, um }, index) => (
-            <tr key={index} className="even:bg-blue-gray-50/50">
-              <td className="p-4">
-                <Typography
-                  variant="small"
-                  color="blue-gray"
-                  className="font-normal"
-                >
-                  {indice}
-                </Typography>
-              </td>
-              <td className="p-4">
-                <Typography
-                  variant="small"
-                  color="blue-gray"
-                  className="font-normal"
-                >
-                  {min}
-                </Typography>
-              </td>
-              <td className="p-4">
-                <Typography
-                  variant="small"
-                  color="blue-gray"
-                  className="font-normal"
-                >
-                  {max}
-                </Typography>
-              </td>
-              <td className="p-4">
-                <Typography
-                  variant="small"
-                  color="blue-gray"
-                  className="font-normal"
-                >
-                  {avg}
-                </Typography>
-              </td>
-              <td className="p-4">
-                <Typography
-                  variant="small"
-                  color="blue-gray"
-                  className="font-normal"
-                >
-                  {um}
-                </Typography>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
-}

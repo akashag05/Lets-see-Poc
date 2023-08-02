@@ -7,10 +7,24 @@ import {
   DialogFooter,
 } from "@material-tailwind/react";
 import { ChartInterface, ChartInterfaceError } from "../Highcharts/chartInterface";
-import { ErrorDiscardChartTable, UsageChartTable } from "../Table/ChartTable";
+import { InterfaceChartTable } from "../Table/ChartTable";
 import Picker from "../Picker/Picker";
+import { interfaceNames } from "@/api/interfaceAll";
 
 export function Modal(props: any) {
+  const bodyData = {
+    gte: "2023-07-17T00:00:00",
+    lte: "2023-07-27T23:59:59",
+    device: props.value.device_name,
+  };
+  let [response, setResponse] = React.useState([]);
+
+  useEffect(() => {
+    const fetchChartData = async () => {
+        interfaceNames(bodyData).then((data) => setResponse(data));
+    }
+    fetchChartData();
+}, [])
   const [toggle, setToggle] = React.useState("usage")
   const [size, setSize] = React.useState(props.ModalOpen);
 
@@ -35,33 +49,38 @@ export function Modal(props: any) {
         handler={handleOpen}
       >
         <DialogHeader>
-          <div className="w-full flex justify-between items-center">
-            <div>
-              {props.value.device_name}
+          <div className="w-full">
+            <div className="w-full flex justify-between items-center">
+              <div>
+                {props.value.device_name}
+              </div>
+              <div>
+                <Button
+                  variant="text"
+                  color="red"
+                  onClick={() => handleOpen(null)}
+                  className="mr-1 text-xl"
+                >
+                  <span>x</span>
+                </Button>
+              </div>
             </div>
-            <div>
-              <Button
-                variant="text"
-                color="red"
-                onClick={() => handleOpen(null)}
-                className="mr-1 text-xl"
-              >
-                <span>x</span>
-              </Button>
+            <div className="z-50 flex justify-between w-full mt-2">
+              <select className="w-1/5 border-2 rounded" name="" id="interfaceSelect">
+                 {response.map((option) => {
+                  return (
+                    <option key={option} value={option} >
+                      {option}
+                    </option>
+                  );
+                })}
+              </select>
+
+              <Picker />
             </div>
           </div>
         </DialogHeader>
         <DialogBody divider className="overflow-y-scroll">
-          <div className="z-50 flex justify-between w-full mb-5">
-
-            <select className="w-1/5 border-2 rounded" name="" id="">
-              <option value="">Gi0/0/0</option>
-              <option value="">Gi0/0/1</option>
-              <option value="">Gi0/0/2</option>
-            </select>
-
-            <Picker />
-          </div>
           {toggle == "usage" ? (
 
             <div id="usage-chart-div">
@@ -74,13 +93,7 @@ export function Modal(props: any) {
 
           )}
 
-          {toggle == "usage" ?
-            (
-              <UsageChartTable />
-            ) : (
-              <ErrorDiscardChartTable/>
-            )
-          }
+          <InterfaceChartTable />
         </DialogBody>
         <DialogFooter>
           <div className="flex w-full justify-center gap-3">

@@ -8,7 +8,7 @@
       "average_incoming_discards": 0,
       "average_outgoing_errors": 0,
       "average_outgoing_discards": 0,
-      "interface": "Gi0/0/0",
+      "interface": "Gi0/0/1",
       "device_name": "CGB-CH-RHE-G-IP-IZOIW-R-1"
     }
   ]

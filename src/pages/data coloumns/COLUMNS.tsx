@@ -24,13 +24,7 @@ export const COLOUMNS_OLD = [
     Header: "Site Name",
     accessor: "sites_name",
     Cell: (props: { cell: any; value: string }) => {
-      return (
-        <Link
-          href={`/DeviceDetails/DeviceDetails?service_id=${props.cell.row.original.service_id}&site_name=${props.cell.row.original.site_name}&device=${props.cell.row.original.device}`}
-        >
-          {props.value}
-        </Link>
-      );
+      return <Link href="/DeviceDetails/DeviceDetails">{props.value}</Link>;
     },
   },
   {
@@ -84,7 +78,7 @@ export const COLOUMNS = [
     Cell: (props: { cell: any; value: string }) => {
       return (
         <Link
-          href={`/DeviceDetails/DeviceDetails?service_id=${props.cell.row.original.service_id}&site_name=${props.cell.row.original.site_name}&device=${props.cell.row.original.device}`}
+          href={`/DeviceDetails/DeviceDetails?service_id=${props.cell.row.original.service_id}&site_name=${props.cell.row.original.site_name}&device=${props.cell.row.original.device_name}`}
         >
           {props.value}
         </Link>
@@ -146,15 +140,15 @@ export const interfaceColoumns = [
         let l = length,
           n = parseInt(x, 10) || 0;
         if (!length) {
-          while (n >= 1024 && ++l) {
-            n = n / 1024;
+          while (n >= 1000 && ++l) {
+            n = n / 1000;
           }
         } else {
           for (let i = 0; i < length; i++) {
-            n = n / 1024;
+            n = n / 1000;
           }
-          while (n >= 1024 && ++l) {
-            n = n / 1024;
+          while (n >= 1000 && ++l) {
+            n = n / 1000;
           }
         }
         length = Math.max(l, length);
@@ -185,15 +179,15 @@ export const interfaceColoumns = [
         let l = length,
           n = parseInt(x, 10) || 0;
         if (!length) {
-          while (n >= 1024 && ++l) {
-            n = n / 1024;
+          while (n >= 1000 && ++l) {
+            n = n / 1000;
           }
         } else {
           for (let i = 0; i < length; i++) {
-            n = n / 1024;
+            n = n / 1000;
           }
-          while (n >= 1024 && ++l) {
-            n = n / 1024;
+          while (n >= 1000 && ++l) {
+            n = n / 1000;
           }
         }
 
