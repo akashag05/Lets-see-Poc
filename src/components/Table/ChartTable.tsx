@@ -11,7 +11,13 @@ const TABLE_ROWS = [
   },
 ];
 
-const TABLE_HEAD_USAGE = ["Indices","Minimum", "Maximum", "Average", "Unit of Measure"];
+const TABLE_HEAD_USAGE = [
+  "Indices",
+  "Minimum",
+  "Maximum",
+  "Average",
+  "Unit of Measure",
+];
 
 const TABLE_ROWS_USAGE = [
   {
@@ -27,7 +33,7 @@ const TABLE_ROWS_USAGE = [
     max: "80",
     avg: "50",
     um: "Mbps",
-  }
+  },
 ];
 
 const TABLE_ROWS_Error = [
@@ -58,10 +64,11 @@ const TABLE_ROWS_Error = [
     max: "80",
     avg: "50",
     um: "Count",
-  }
+  },
 ];
 
-export function ChartTable() {
+export function ChartTable(props: any) {
+  console.log("propsdata in table", props.min);
   return (
     <Card className="h-full w-full">
       <h2>Calculated Data from Chart</h2>
@@ -85,46 +92,46 @@ export function ChartTable() {
           </tr>
         </thead>
         <tbody>
-          {TABLE_ROWS.map(({ min, max, avg, um }, index) => (
-            <tr key={index} className="even:bg-blue-gray-50/50">
-              <td className="p-4">
-                <Typography
-                  variant="small"
-                  color="blue-gray"
-                  className="font-normal"
-                >
-                  {min}
-                </Typography>
-              </td>
-              <td className="p-4">
-                <Typography
-                  variant="small"
-                  color="blue-gray"
-                  className="font-normal"
-                >
-                  {max}
-                </Typography>
-              </td>
-              <td className="p-4">
-                <Typography
-                  variant="small"
-                  color="blue-gray"
-                  className="font-normal"
-                >
-                  {avg}
-                </Typography>
-              </td>
-              <td className="p-4">
-                <Typography
-                  variant="small"
-                  color="blue-gray"
-                  className="font-normal"
-                >
-                  {um}
-                </Typography>
-              </td>
-            </tr>
-          ))}
+          {/* {props.tableData.map((item : any, index) => ( */}
+          <tr className="even:bg-blue-gray-50/50">
+            <td className="p-4">
+              <Typography
+                variant="small"
+                color="blue-gray"
+                className="font-normal"
+              >
+                {props.min}
+              </Typography>
+            </td>
+            <td className="p-4">
+              <Typography
+                variant="small"
+                color="blue-gray"
+                className="font-normal"
+              >
+                {/* {props.tableData.max} */}
+              </Typography>
+            </td>
+            <td className="p-4">
+              <Typography
+                variant="small"
+                color="blue-gray"
+                className="font-normal"
+              >
+                {/* {props.tableData.avg} */}
+              </Typography>
+            </td>
+            <td className="p-4">
+              <Typography
+                variant="small"
+                color="blue-gray"
+                className="font-normal"
+              >
+                %
+              </Typography>
+            </td>
+          </tr>
+          {/* ))} */}
         </tbody>
       </table>
     </Card>
@@ -155,7 +162,7 @@ export function UsageChartTable() {
           </tr>
         </thead>
         <tbody>
-          {TABLE_ROWS_USAGE.map(({ indice,min, max, avg, um }, index) => (
+          {TABLE_ROWS_USAGE.map(({ indice, min, max, avg, um }, index) => (
             <tr key={index} className="even:bg-blue-gray-50/50">
               <td className="p-4">
                 <Typography
@@ -234,7 +241,7 @@ export function ErrorDiscardChartTable() {
           </tr>
         </thead>
         <tbody>
-          {TABLE_ROWS_Error.map(({ indice,min, max, avg, um }, index) => (
+          {TABLE_ROWS_Error.map(({ indice, min, max, avg, um }, index) => (
             <tr key={index} className="even:bg-blue-gray-50/50">
               <td className="p-4">
                 <Typography

@@ -82,7 +82,13 @@ export const COLOUMNS = [
     Header: "Site Name",
     accessor: "site_name",
     Cell: (props: { cell: any; value: string }) => {
-      return <Link href="/DeviceDetails/DeviceDetails">{props.value}</Link>;
+      return (
+        <Link
+          href={`/DeviceDetails/DeviceDetails?service_id=${props.cell.row.original.service_id}&site_name=${props.cell.row.original.site_name}&device=${props.cell.row.original.device}`}
+        >
+          {props.value}
+        </Link>
+      );
     },
   },
   {
@@ -90,8 +96,12 @@ export const COLOUMNS = [
     accessor: "location",
   },
   {
+    Header: "Service Id",
+    accessor: "service_id",
+  },
+  {
     Header: "Device",
-    accessor: "device",
+    accessor: "device_name",
   },
 ];
 

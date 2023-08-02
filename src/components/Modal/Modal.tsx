@@ -24,7 +24,7 @@ export function Modal(props: any) {
 
   }, [props.ModalOpen])
 
-  console.warn("toggle", toggle)
+  // console.warn("toggle", toggle)
   return (
     <>
       <Dialog

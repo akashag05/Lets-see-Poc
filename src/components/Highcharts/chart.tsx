@@ -7,13 +7,15 @@ import { HighchartsReact } from "highcharts-react-official";
 import moment from "moment";
 import { cpuUtilization } from "@/api/cpuUtilization";
 import { memoryUtilization } from "@/api/memoryUtilization";
+import { ChartTable } from "../Table/ChartTable";
 
 // HighchartsExporting(Highcharts);
 // HighchartsExportData(Highcharts);
 // HighchartsAccessibility(Highcharts);
 
 export const Chart: React.FC = (props: any) => {
-  console.log("time in chart", props.gteTime);
+  const [responseData, setResponseData] = React.useState({});
+  // console.log("time in chart", props.gteTime);
   const currentTime = moment();
   const bodyData = {
     lte: currentTime.format("YYYY-MM-DDTHH:mm:ss"),
@@ -25,7 +27,7 @@ export const Chart: React.FC = (props: any) => {
   useEffect(() => {
     const fetchChartData = async () => {
       response = await cpuUtilization(bodyData);
-      // setReguData(response);
+      // setResponseData(response);
       console.log("API response ", response);
       try {
         Highcharts.chart("container" + props.graphID, {
@@ -75,7 +77,7 @@ export const Chart: React.FC = (props: any) => {
           },
           yAxis: {
             title: {
-              text: "% rate",
+              text: "Percentage (%)",
             },
           },
           legend: {
@@ -116,7 +118,7 @@ export const Chart: React.FC = (props: any) => {
             {
               type: "area",
               name: `${props.kpiName} 1`,
-              data: response,
+              data: response.data,
             },
           ],
         });
@@ -128,22 +130,25 @@ export const Chart: React.FC = (props: any) => {
     fetchChartData();
   }, [bodyData]);
 
+  console.log("response data in state", responseData);
   return (
     <div>
       <figure className="highcharts-figure my-4">
         <div id={"container" + props.graphID} />
       </figure>
+      <ChartTable min={responseData.min} />
     </div>
   );
 };
 
 export const MemoryChart = (props: any) => {
+  const currentTime = moment();
+  const bodyData = {
+    lte: currentTime.format("YYYY-MM-DDTHH:mm:ss"),
+    gte: props.gteTime,
+    device: props.device,
+  };
   useEffect(() => {
-    const bodyData = {
-      lte: "now-100d",
-      gte: "now",
-      device: "CGB-CH-RHE-G-IP-IZOIW-R-1",
-    };
     const fetchChartData = async () => {
       try {
         const data = await memoryUtilization(bodyData);
@@ -164,7 +169,7 @@ export const MemoryChart = (props: any) => {
           },
           yAxis: {
             title: {
-              text: "% rate",
+              text: "bytes",
             },
           },
           legend: {
@@ -179,17 +184,17 @@ export const MemoryChart = (props: any) => {
             {
               type: "area",
               name: "Used Memory",
-              data: data.map((point) => [point[0], point[1]]),
+              data: data.data.map((point) => [point[0], point[1]]),
             },
             {
               type: "line",
               name: "Free Memory",
-              data: data.map((point) => [point[0], point[2]]), // Sample conversion rate (EUR to GBP)
+              data: data.data.map((point) => [point[0], point[2]]), // Sample conversion rate (EUR to GBP)
             },
             {
               type: "line",
               name: "Total Memory",
-              data: data.map((point) => [point[0], point[3]]), // Sample conversion rate (USD to GBP)
+              data: data.data.map((point) => [point[0], point[3]]), // Sample conversion rate (USD to GBP)
             },
           ],
         });
@@ -199,11 +204,14 @@ export const MemoryChart = (props: any) => {
     };
 
     fetchChartData();
-  }, []);
+  }, [bodyData]);
 
   return (
-    <figure className="highcharts-figure">
-      <div id="container" />
-    </figure>
+    <div>
+      <figure className="highcharts-figure">
+        <div id="container" />
+      </figure>
+      <ChartTable />
+    </div>
   );
 };
