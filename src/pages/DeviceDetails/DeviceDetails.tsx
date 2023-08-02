@@ -20,12 +20,15 @@ import moment from "moment";
 const DeviceDetail = () => {
   const [DeviceToggle, setDeviceToggle] = useState(false);
   const [SiteToggle, setSiteToggle] = useState(false);
-  const [time, setTime] = useState("");
+  const currentTime = moment();
+  const [time, setTime] = useState(
+    currentTime.subtract(1, "hours").format("YYYY-MM-DDTHH:mm:ss")
+  );
 
   const router = useRouter();
   const { service_id, site_name, device } = router.query;
 
-  console.warn("time from pickeer", time);
+  // console.warn("time from pickeer", time);
   const data = [
     {
       label: "CPU",
@@ -40,20 +43,12 @@ const DeviceDetail = () => {
       value: "interface",
     },
   ];
+  // Get the current time
 
-  const currentTime = moment(); // Get the current time
-  useEffect(() => {
-    const timeBefore7Hours = currentTime.subtract(1, "hours"); // Subtract 7 hours from the current time
-    setTime(timeBefore7Hours.format("YYYY-MM-DDTHH:mm:ss").toString());
-  }, []);
-
-  console.log("time in device details", time);
-  // Display the results
-  // console.log("Current Time:", currentTime.format("YYYY-MM-DD HH:mm:ss"));
-  // console.log(
-  //   "Time 7 Hours Before:",
-  //   timeBefore7Hours.format("YYYY-MM-DD HH:mm:ss")
-  // );
+  // useEffect(() => {
+  //   const timeBefore7Hours = currentTime.subtract(1, "hours"); // Subtract 7 hours from the current time
+  //   setTime(timeBefore7Hours.format("YYYY-MM-DDTHH:mm:ss").toString());
+  // }, []);
 
   return (
     <div className="relative">
@@ -98,7 +93,7 @@ const DeviceDetail = () => {
                 <CpuUtilozation device={device} gteTime={time} />
               </TabPanel>
               <TabPanel key="memory" value="memory">
-                <MemoryUtilization />
+                <MemoryUtilization device={device} gteTime={time} />
               </TabPanel>
               <TabPanel key="interface" value="interface">
                 <Interface />

@@ -14,7 +14,8 @@ const Table = (props: any) => {
   //   const columns = useMemo(() => props.COLOUMNS, []);
   //   const data = useMemo(() => props.tableData, []);
   const columns = useMemo(() => props.COLOUMNS, [props.COLOUMNS]);
-  const data = useMemo(() => props.tableData, [props.tableData]);
+  let data = useMemo(() => props.tableData, [props.tableData]);
+
   const {
     getTableProps,
     getTableBodyProps,

@@ -7,7 +7,7 @@ const Picker = (props: any) => {
   const handleChange = (event: any) => {
     const { value } = event.target;
     setSelectedValue(event.target.value);
-    console.log("dropdown value", event.target.value);
+    // console.log("dropdown value", event.target.value);
     let convertedDate;
     const currentTime = moment();
     if (value == "last1h") {
@@ -27,7 +27,7 @@ const Picker = (props: any) => {
     }
 
     const formattedTime = convertedDate.format("YYYY-MM-DDTHH:mm:ss");
-    console.log("updated time", formattedTime);
+    // console.log("updated time", formattedTime);
     props.setTime(formattedTime);
   };
 
