@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useLayoutEffect } from 'react'
 import Table from '../Table/table'
 import { interfaceColoumns } from '@/pages/data coloumns/COLUMNS'
 import MOCK_DATA from './MOCK_DATA.json'
@@ -20,23 +20,23 @@ function Interface() {
         lte: "2023-07-27T23:59:59",
         device: "CGB-CH-THUN-326-RDS-R-1",
     };
-    let response;
+    let [response, setResponse] = React.useState(MOCK_DATA);
 
     useEffect(() => {
         const fetchChartData = async () => {
-            response = await interfaceData(bodyData);
-            console.log(response)
+            interfaceData(bodyData).then((data) => setResponse(data));
         }
         fetchChartData();
     }, [])
-
+    
+    // setResponse(val)
     // useEffect(() => {
     //     return
     // }, [response])
 
 
     return (
-        <Table COLOUMNS={interfaceColoumns} tableData={MOCK_DATA.data}></Table>
+        <Table COLOUMNS={interfaceColoumns} tableData={response.data}></Table>
     )
 }
 

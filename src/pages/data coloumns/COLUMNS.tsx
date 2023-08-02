@@ -3,7 +3,7 @@ import { Modal } from "@/components/Modal/Modal";
 import Link from "next/link";
 
 let length = 0;
-const units = ['bytes', 'Kb', 'Mb', 'Gb', 'Tb', 'Pb', 'Eb', 'Zb', 'Yb'];
+const units = ['bytes', 'Kbps', 'Mbps', 'Gbps', 'Tbps', 'Pbps', 'Ebps', 'Zbps', 'Ybps'];
 
 export const COLOUMNS_OLD = [
     {
@@ -90,7 +90,7 @@ export const interfaceColoumns = [
             return (
                 <>
                     <div>In Traffic</div>
-                    <small>avg ({units[length]}/s)</small>
+                    <small>avg ({units[length]})</small>
                 </>
             )
         },
@@ -100,17 +100,17 @@ export const interfaceColoumns = [
 
                 let l=length, n = parseInt(x, 10) || 0;
                 if(!length){
-                    while (n >= 1024 && ++l) {
-                        n = n / 1024;
+                    while (n >= 1000 && ++l) {
+                        n = n / 1000;
                     }
                 }
 
                 else{
                     for (let i = 0; i < length; i++) {
-                        n = n / 1024;
+                        n = n / 1000;
                     }
-                    while (n >= 1024 && ++l) {
-                        n = n / 1024;
+                    while (n >= 1000 && ++l) {
+                        n = n / 1000;
                     }
                 }
                 length = Math.max(l, length)
@@ -132,7 +132,7 @@ export const interfaceColoumns = [
             return (
                 <>
                     <div>Out Traffic</div>
-                    <small>avg ({units[length]}/s)</small>
+                    <small>avg ({units[length]})</small>
                 </>
             )
         },
@@ -142,17 +142,17 @@ export const interfaceColoumns = [
 
                 let l=length, n = parseInt(x, 10) || 0;
                 if(!length){
-                    while (n >= 1024 && ++l) {
-                        n = n / 1024;
+                    while (n >= 1000 && ++l) {
+                        n = n / 1000;
                     }
                 }
 
                 else{
                     for (let i = 0; i < length; i++) {
-                        n = n / 1024;
+                        n = n / 1000;
                     }
-                    while (n >= 1024 && ++l) {
-                        n = n / 1024;
+                    while (n >= 1000 && ++l) {
+                        n = n / 1000;
                     }
                 }
 
