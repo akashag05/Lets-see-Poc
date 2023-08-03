@@ -10,11 +10,15 @@ import { ChartInterface, ChartInterfaceError } from "../Highcharts/chartInterfac
 import { InterfaceChartTable } from "../Table/ChartTable";
 import Picker from "../Picker/Picker";
 import { interfaceNames } from "@/api/interfaceAll";
+import { useAppContext } from "../appContext";
+import moment from "moment";
 
 export function Modal(props: any) {
+  const currentTime = moment();
+  const {time, toggleTime} = useAppContext()
   const bodyData = {
-    gte: "2023-07-17T00:00:00",
-    lte: "2023-07-27T23:59:59",
+    lte: currentTime.format("YYYY-MM-DDTHH:mm:ss"),
+    gte: time,
     device: props.value.device_name,
   };
   let [response, setResponse] = React.useState([]);
@@ -61,11 +65,11 @@ export function Modal(props: any) {
                   onClick={() => handleOpen(null)}
                   className="mr-1 text-xl"
                 >
-                  <span>x</span>
+                  <span>✖</span>
                 </Button>
               </div>
             </div>
-            <div className="z-50 flex justify-between w-full mt-2">
+            <div className="z-50 flex justify-between w-full mt-2 text-sm">
               <select className="w-1/5 border-2 rounded" name="" id="interfaceSelect">
                  {response.map((option) => {
                   return (

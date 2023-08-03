@@ -1,17 +1,11 @@
 import { Card, Typography } from "@material-tailwind/react";
+import React, { useMemo, useState } from "react";
 
-const TABLE_HEAD = ["Minimum", "Maximum", "Average", "Unit of Measure"];
+const TABLE_HEAD = ["Memory","Minimum", "Maximum", "Average", "Unit of Measure"];
 
-const TABLE_ROWS = [
-  {
-    min: "54",
-    max: "109",
-    avg: "34",
-    um: "%",
-  },
-];
 
-const TABLE_HEAD_INTERFACE = ["Indices","Minimum", "Maximum", "Average", "Unit of Measure"];
+
+const TABLE_HEAD_INTERFACE = ["Indices", "Minimum", "Maximum", "Average", "Unit of Measure"];
 
 const TABLE_ROWS_INTERFACE = [
   {
@@ -59,7 +53,6 @@ const TABLE_ROWS_INTERFACE = [
 ];
 
 export function ChartTable(props: any) {
-  console.log("propsdata in table", props.min);
   return (
     <Card className="h-full w-full">
       <h2>Calculated Data from Chart</h2>
@@ -100,7 +93,7 @@ export function ChartTable(props: any) {
                 color="blue-gray"
                 className="font-normal"
               >
-                {/* {props.tableData.max} */}
+                {props.max}
               </Typography>
             </td>
             <td className="p-4">
@@ -109,7 +102,7 @@ export function ChartTable(props: any) {
                 color="blue-gray"
                 className="font-normal"
               >
-                {/* {props.tableData.avg} */}
+                {props.avg}
               </Typography>
             </td>
             <td className="p-4">
@@ -129,7 +122,132 @@ export function ChartTable(props: any) {
   );
 }
 
-export function InterfaceChartTable() {
+export function MemoryChartTable(props: any) {
+  // console.log(props)
+  return (
+    <Card className="h-full w-full">
+      <h2>Calculated Data from Chart</h2>
+      <table className="w-full min-w-max table-auto text-left">
+        <thead>
+          <tr>
+            {TABLE_HEAD.map((head) => (
+              <th
+                key={head}
+                className="border-b border-blue-gray-100 bg-blue-gray-50 p-4"
+              >
+                <Typography
+                  variant="small"
+                  color="blue-gray"
+                  className="font-normal leading-none opacity-70"
+                >
+                  {head}
+                </Typography>
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          <tr className="even:bg-blue-gray-50/50">
+          <td className="p-4">
+              <Typography
+                variant="small"
+                color="blue-gray"
+                className="font-normal"
+              >
+                Free
+              </Typography>
+            </td>
+            <td className="p-4">
+              <Typography
+                variant="small"
+                color="blue-gray"
+                className="font-normal"
+              >
+                {props.minFree}
+              </Typography>
+            </td>
+            <td className="p-4">
+              <Typography
+                variant="small"
+                color="blue-gray"
+                className="font-normal"
+              >
+                {props.maxFree}
+              </Typography>
+            </td>
+            <td className="p-4">
+              <Typography
+                variant="small"
+                color="blue-gray"
+                className="font-normal"
+              >
+                {props.avgFree}
+              </Typography>
+            </td>
+            <td className="p-4">
+              <Typography
+                variant="small"
+                color="blue-gray"
+                className="font-normal"
+              >
+                %
+              </Typography>
+            </td>
+          </tr>
+          <tr className="even:bg-blue-gray-50/50">
+          <td className="p-4">
+              <Typography
+                variant="small"
+                color="blue-gray"
+                className="font-normal"
+              >
+                Used
+              </Typography>
+            </td>
+            <td className="p-4">
+              <Typography
+                variant="small"
+                color="blue-gray"
+                className="font-normal"
+              >
+                {props.minUsed}
+              </Typography>
+            </td>
+            <td className="p-4">
+              <Typography
+                variant="small"
+                color="blue-gray"
+                className="font-normal"
+              >
+                {props.maxUsed}
+              </Typography>
+            </td>
+            <td className="p-4">
+              <Typography
+                variant="small"
+                color="blue-gray"
+                className="font-normal"
+              >
+                {props.avgUsed}
+              </Typography>
+            </td>
+            <td className="p-4">
+              <Typography
+                variant="small"
+                color="blue-gray"
+                className="font-normal"
+              >
+                %
+              </Typography>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </Card>
+  );
+}
+
+export function InterfaceChartTable(props: any) {
   return (
     <div className="h-auto w-full">
       <h2>Calculated Data from Chart</h2>
@@ -153,7 +271,7 @@ export function InterfaceChartTable() {
           </tr>
         </thead>
         <tbody>
-          {TABLE_ROWS_INTERFACE.map(({ indice,min, max, avg, um }, index) => (
+          {TABLE_ROWS_INTERFACE.map(({ indice, min, max, avg, um }, index) => (
             <tr key={index} className="even:bg-blue-gray-50/50">
               <td className="p-4">
                 <Typography

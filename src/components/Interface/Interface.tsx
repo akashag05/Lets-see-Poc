@@ -2,23 +2,17 @@ import React, { useEffect, useLayoutEffect } from 'react'
 import Table from '../Table/table'
 import { interfaceColoumns } from '@/pages/data coloumns/COLUMNS'
 import MOCK_DATA from './MOCK_DATA.json'
-import PieChart from '../Highcharts/pieChart'
-import { Modal } from '../Modal/Modal'
-import {
-  Button,
-  Dialog,
-  DialogHeader,
-  DialogBody,
-  DialogFooter,
-} from "@material-tailwind/react";
 import { interfaceData } from '@/api/interface'
+import { useAppContext } from '../appContext'
+import moment from "moment";
 
 function Interface() {
-
+    const currentTime = moment();
+    const {time, toggleTime} = useAppContext()
     const bodyData = {
-        gte: "2023-07-17T00:00:00",
-        lte: "2023-07-27T23:59:59",
-        device: "CGB-CH-THUN-326-RDS-R-1",
+        lte: currentTime.format("YYYY-MM-DDTHH:mm:ss"),
+        gte: time,
+        device: "CGB-CH-ROT-RDS-R-1",
     };
     let [response, setResponse] = React.useState(MOCK_DATA);
 
@@ -28,7 +22,7 @@ function Interface() {
         }
         fetchChartData();
     }, [])
-    
+
     // setResponse(val)
     // useEffect(() => {
     //     return
@@ -36,7 +30,9 @@ function Interface() {
 
 
     return (
-        <Table COLOUMNS={interfaceColoumns} tableData={response.data}></Table>
+        <div className='ml-14'>
+            <Table COLOUMNS={interfaceColoumns} tableData={response.data}></Table>
+        </div>
     )
 }
 

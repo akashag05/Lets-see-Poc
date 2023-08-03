@@ -6,16 +6,19 @@ import HighchartsAccessibility from "highcharts/modules/accessibility";
 import { HighchartsReact } from "highcharts-react-official";
 import { cpuUtilization } from "@/api/cpuUtilization";
 import { memoryUtilization } from "@/api/memoryUtilization";
-
+import { useAppContext } from "../appContext";
+import moment from "moment";
 // HighchartsExporting(Highcharts);
 // HighchartsExportData(Highcharts);
 // HighchartsAccessibility(Highcharts);
 
 
 export const ChartInterface = (props: any) => {
+  const currentTime = moment();
+  const {time, toggleTime} = useAppContext()
   const bodyData = {
-    gte: "2023-07-17T00:00:00",
-    lte: "2023-07-27T23:59:59",
+    lte: currentTime.format("YYYY-MM-DDTHH:mm:ss"),
+    gte: time,
     device: "CGB-CH-THUN-326-RDS-R-1",
   };
   let response: any;
@@ -77,9 +80,11 @@ export const ChartInterface = (props: any) => {
 };
 
 export const ChartInterfaceError = (props: any) => {
+  const currentTime = moment();
+  const {time, toggleTime} = useAppContext()
   const bodyData = {
-    gte: "2023-07-17T00:00:00",
-    lte: "2023-07-27T23:59:59",
+    lte: currentTime.format("YYYY-MM-DDTHH:mm:ss"),
+    gte: time,
     device: "CGB-CH-THUN-326-RDS-R-1",
   };
   let response: any;
