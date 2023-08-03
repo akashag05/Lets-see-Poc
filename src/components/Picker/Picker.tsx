@@ -1,7 +1,10 @@
 import React from "react";
 import moment from "moment";
+import { useAppContext } from "../appContext";
 
 const Picker = (props: any) => {
+  const {time, toggleTime} = useAppContext()
+  const {timeDropDown, toggleTimeDropDown} = useAppContext()
   const [selectedValue, setSelectedValue] = React.useState(""); // State to store the selected value
 
   const handleChange = (event: any) => {
@@ -27,16 +30,19 @@ const Picker = (props: any) => {
     }
 
     const formattedTime = convertedDate.format("YYYY-MM-DDTHH:mm:ss");
-    // console.log("updated time", formattedTime);
-    props.setTime(formattedTime);
+    // console.log("time", time);
+    toggleTime(formattedTime);
+    
+    toggleTimeDropDown(value);
   };
+  // console.log("updated time", time);
 
   return (
     <div>
       <select
         id="dropdown"
         className="mt-1 p-2 block w-full rounded-md bg-white border-2 border-gray-600 focus:border-indigo-500 focus:ring focus:ring-indigo-200"
-        value={selectedValue}
+        value={timeDropDown}
         onChange={handleChange}
       >
         <option value="">Select an option</option>

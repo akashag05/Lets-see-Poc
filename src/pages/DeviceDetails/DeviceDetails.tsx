@@ -20,13 +20,21 @@ import moment from "moment";
 const DeviceDetail = () => {
   const [DeviceToggle, setDeviceToggle] = useState(false);
   const [SiteToggle, setSiteToggle] = useState(false);
+  const [selectedDevice, setSelectedDevice] = useState(0);
   const currentTime = moment();
-  const [time, setTime] = useState(
-    currentTime.subtract(1, "hours").format("YYYY-MM-DDTHH:mm:ss")
-  );
+
+  // const [time, setTime] = useState(
+  //   currentTime.subtract(15, "days").format("YYYY-MM-DDTHH:mm:ss")
+  // );
+
+  // const [timeDropdown, setTimeDropdown] = useState('last15d');
 
   const router = useRouter();
-  const { service_id, site_name, device } = router.query;
+  let { service_id, site_name, device } = router.query;
+  let devices = (device as String).split(', ');
+  // let devices = (<String>device).split(',');
+  // console.log('devices - ' + devices[0])
+  // alert(typeof device)
 
   // console.warn("time from pickeer", time);
   const data = [
@@ -62,16 +70,20 @@ const DeviceDetail = () => {
         <div className="my-4 mx-8 p-4">
           <BreadcrumbsWithIcon site={site_name} service_id={service_id} />
         </div>
-        <div className=" flex ml-8">
-          <div className="flex w-fit h-fit rounded-xl p-2 m-4 border border-slate-900 text-l bg-[#00acc1] text-white cursor-pointer">
-            <BsRouterFill />
-            <p className="ml-2">{device}</p>
-          </div>
-        </div>
+            <div className="flex ml-8">
+        {devices.map((device1, i) => {
+          return ( 
+              <div onClick={()=>setSelectedDevice(i)} key={i} className={selectedDevice == i ?"flex w-fit h-fit items-center rounded-xl p-2 m-4 border-2 border-slate-900 text-l bg-[#00acc1] text-white cursor-pointer":"flex w-fit h-fit rounded-xl p-2 m-4 border-2 border-slate-900 text-l items-center bg-white text-[#00acc1] cursor-pointer"}>
+                <BsRouterFill />
+                <p className="ml-2">{device1}</p>
+              </div>
+          )
+        })}
+            </div>
         <div className="border-t-2 m-2"></div>
         <div className="flex justify-end mx-4">
-          <div className=" flex border-2 p-2">
-            <Picker setTime={setTime} />
+          <div className=" flex border-2 p-2 rounded-md">
+            <Picker />
             <div className="ml-4 self-center">
               <SwitchLabel />
             </div>
@@ -90,10 +102,10 @@ const DeviceDetail = () => {
             </TabsHeader>
             <TabsBody className="pl-16">
               <TabPanel key="cpu" value="cpu">
-                <CpuUtilozation device={device} gteTime={time} />
+                <CpuUtilozation device={devices[selectedDevice]}/>
               </TabPanel>
               <TabPanel key="memory" value="memory">
-                <MemoryUtilization device={device} gteTime={time} />
+                <MemoryUtilization device={devices[selectedDevice]} />
               </TabPanel>
               <TabPanel key="interface" value="interface">
                 <Interface />

@@ -1,7 +1,7 @@
 export const interfaceData = async (props: any) => {
   console.log("props  in add role", props);
   try {
-    const res = await fetch(`http://95.217.191.79:8000/interface`, {
+    const res = await fetch(`http://95.217.191.79:8000/interfaceSummary`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

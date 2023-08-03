@@ -7,7 +7,8 @@ import { HighchartsReact } from "highcharts-react-official";
 import moment from "moment";
 import { cpuUtilization } from "@/api/cpuUtilization";
 import { memoryUtilization } from "@/api/memoryUtilization";
-import { ChartTable } from "../Table/ChartTable";
+import { ChartTable, MemoryChartTable } from "../Table/ChartTable";
+import { useAppContext } from "../appContext";
 
 // HighchartsExporting(Highcharts);
 // HighchartsExportData(Highcharts);
@@ -15,21 +16,28 @@ import { ChartTable } from "../Table/ChartTable";
 
 export const Chart: React.FC = (props: any) => {
   const [responseData, setResponseData] = React.useState({});
+  const [min, setMin] = React.useState(0);
+  const [max, setMax] = React.useState(0);
+  const [avg, setAvg] = React.useState(0);
+  const {time, toggleTime} = useAppContext()
   // console.log("time in chart", props.gteTime);
   const currentTime = moment();
   const bodyData = {
-    lte: currentTime.format("YYYY-MM-DDTHH:mm:ss"),
-    gte: props.gteTime,
-    device: props.device,
+    "lte": currentTime.format("YYYY-MM-DDTHH:mm:ss"),
+    "gte": time,
+    "device": props.device,
   };
-  console.log("bodyData", bodyData);
+
   let response;
   useEffect(() => {
     const fetchChartData = async () => {
       response = await cpuUtilization(bodyData);
       // setResponseData(response);
-      console.log("API response ", response);
+      // console.log("API response for CPU - "+ props.device, response);
       try {
+        setMin(response.min);
+        setMax(response.max);
+        setAvg(response.avg);
         Highcharts.chart("container" + props.graphID, {
           chart: {
             zoomType: "x",
@@ -118,7 +126,7 @@ export const Chart: React.FC = (props: any) => {
             {
               type: "area",
               name: `${props.kpiName} 1`,
-              data: response.data,
+              data: response?.data,
             },
           ],
         });
@@ -128,32 +136,48 @@ export const Chart: React.FC = (props: any) => {
     };
 
     fetchChartData();
-  }, [bodyData]);
+  }, [bodyData, props.device]);
+  
 
-  console.log("response data in state", responseData);
+  // console.log("response data in state", responseData);
   return (
     <div>
       <figure className="highcharts-figure my-4">
         <div id={"container" + props.graphID} />
       </figure>
-      <ChartTable min={responseData.min} />
+      <ChartTable min={min} max={max} avg={avg} />
     </div>
   );
 };
 
 export const MemoryChart = (props: any) => {
+  const [minFree, setMinFree] = React.useState(0);
+  const [maxFree, setMaxFree] = React.useState(0);
+  const [avgFree, setAvgFree] = React.useState(0);
+  const [minUsed, setMinUsed] = React.useState(0);
+  const [maxUsed, setMaxUsed] = React.useState(0);
+  const [avgUsed, setAvgUsed] = React.useState(0);
+  const {time, toggleTime} = useAppContext()
   const currentTime = moment();
   const bodyData = {
     lte: currentTime.format("YYYY-MM-DDTHH:mm:ss"),
-    gte: props.gteTime,
+    gte: time,
     device: props.device,
   };
+  let data;
   useEffect(() => {
     const fetchChartData = async () => {
       try {
-        const data = await memoryUtilization(bodyData);
+        data = await memoryUtilization(bodyData);
         // const data = await response.json();
-        console.log("memory data", data);
+        // console.log("memory data", data);
+        setMinFree(data.min_free_memory);
+        setMaxFree(data.max_free_memory);
+        setAvgFree(data.avg_free);
+        setMinUsed(data.min_used_memory);
+        setMaxUsed(data.max_used_memory);
+        setAvgUsed(data.avg_used);
+        // console.log(data)
         Highcharts.chart("container", {
           chart: {
             zoomType: "x",
@@ -184,17 +208,17 @@ export const MemoryChart = (props: any) => {
             {
               type: "area",
               name: "Used Memory",
-              data: data.data.map((point) => [point[0], point[1]]),
+              data: data?.data.map((point) => [point[0], point[1]]),
             },
             {
               type: "line",
               name: "Free Memory",
-              data: data.data.map((point) => [point[0], point[2]]), // Sample conversion rate (EUR to GBP)
+              data: data?.data.map((point) => [point[0], point[2]]), // Sample conversion rate (EUR to GBP)
             },
             {
               type: "line",
               name: "Total Memory",
-              data: data.data.map((point) => [point[0], point[3]]), // Sample conversion rate (USD to GBP)
+              data: data?.data.map((point) => [point[0], point[3]]), // Sample conversion rate (USD to GBP)
             },
           ],
         });
@@ -204,14 +228,16 @@ export const MemoryChart = (props: any) => {
     };
 
     fetchChartData();
-  }, [bodyData]);
+  }, [bodyData, props.device]);
+
+  // console.log(min)
 
   return (
     <div>
       <figure className="highcharts-figure">
         <div id="container" />
       </figure>
-      <ChartTable />
+      <MemoryChartTable minUsed={minUsed} maxUsed={maxUsed} avgUsed={avgUsed} minFree={minFree} maxFree={maxFree} avgFree={avgFree}/>
     </div>
   );
 };
