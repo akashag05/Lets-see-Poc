@@ -1,56 +1,9 @@
 import { Card, Typography } from "@material-tailwind/react";
 import React, { useMemo, useState } from "react";
 
-const TABLE_HEAD = ["Memory","Minimum", "Maximum", "Average", "Unit of Measure"];
+const TABLE_HEAD_CPU = ["Minimum", "Maximum", "Average", "Unit of Measure"];
+const TABLE_HEAD_MEMORY = ["Memory", "Minimum", "Maximum", "Average", "Unit of Measure"];
 
-
-
-const TABLE_HEAD_INTERFACE = ["Indices", "Minimum", "Maximum", "Average", "Unit of Measure"];
-
-const TABLE_ROWS_INTERFACE = [
-  {
-    indice: "Incoming",
-    min: "54",
-    max: "109",
-    avg: "34",
-    um: "Mbps",
-  },
-  {
-    indice: "Outgoing",
-    min: "20",
-    max: "80",
-    avg: "50",
-    um: "Mbps",
-  },
-  {
-    indice: "Incoming Error",
-    min: "54",
-    max: "109",
-    avg: "34",
-    um: "Count",
-  },
-  {
-    indice: "Outgoing Error",
-    min: "20",
-    max: "80",
-    avg: "50",
-    um: "Count",
-  },
-  {
-    indice: "Incoming Discard",
-    min: "54",
-    max: "109",
-    avg: "34",
-    um: "Count",
-  },
-  {
-    indice: "Outgoing Discard",
-    min: "20",
-    max: "80",
-    avg: "50",
-    um: "Count",
-  },
-];
 
 export function ChartTable(props: any) {
   return (
@@ -59,7 +12,7 @@ export function ChartTable(props: any) {
       <table className="w-full min-w-max table-auto text-left">
         <thead>
           <tr>
-            {TABLE_HEAD.map((head) => (
+            {TABLE_HEAD_CPU.map((head) => (
               <th
                 key={head}
                 className="border-b border-blue-gray-100 bg-blue-gray-50 p-4"
@@ -130,7 +83,7 @@ export function MemoryChartTable(props: any) {
       <table className="w-full min-w-max table-auto text-left">
         <thead>
           <tr>
-            {TABLE_HEAD.map((head) => (
+            {TABLE_HEAD_MEMORY.map((head) => (
               <th
                 key={head}
                 className="border-b border-blue-gray-100 bg-blue-gray-50 p-4"
@@ -148,7 +101,7 @@ export function MemoryChartTable(props: any) {
         </thead>
         <tbody>
           <tr className="even:bg-blue-gray-50/50">
-          <td className="p-4">
+            <td className="p-4">
               <Typography
                 variant="small"
                 color="blue-gray"
@@ -190,12 +143,12 @@ export function MemoryChartTable(props: any) {
                 color="blue-gray"
                 className="font-normal"
               >
-                %
+                bytes
               </Typography>
             </td>
           </tr>
           <tr className="even:bg-blue-gray-50/50">
-          <td className="p-4">
+            <td className="p-4">
               <Typography
                 variant="small"
                 color="blue-gray"
@@ -237,7 +190,7 @@ export function MemoryChartTable(props: any) {
                 color="blue-gray"
                 className="font-normal"
               >
-                %
+                bytes
               </Typography>
             </td>
           </tr>
@@ -248,13 +201,58 @@ export function MemoryChartTable(props: any) {
 }
 
 export function InterfaceChartTable(props: any) {
+  const TABLE_HEAD_INTERFACE = ["Indices", "Minimum", "Maximum", "Average", "Unit of Measure"];
+  const TABLE_ROWS_INTERFACE = [
+    {
+      indice: "Incoming",
+      min: props.data ? (props.data.incoming_min/Math.pow(1000,props.length)).toFixed(2) : '-',
+      max: props.data ? (props.data.incoming_max/Math.pow(1000,props.length)).toFixed(2) : '-',
+      avg: props.data ? (props.data.incoming_avg/Math.pow(1000,props.length)).toFixed(2) : '-',
+      um: props.unit,
+    },
+    {
+      indice: "Outgoing",
+      min: props.data ? (props.data.outgoing_min/Math.pow(1000,props.length)).toFixed(2) : '-',
+      max: props.data ? (props.data.outgoing_max/Math.pow(1000,props.length)).toFixed(2) : '-',
+      avg: props.data ? (props.data.outgoing_avg/Math.pow(1000,props.length)).toFixed(2) : '-',
+      um: props.unit,
+    },
+    {
+      indice: "Incoming Error",
+      min: props.data ? props.data.incoming_errors_min : '-',
+      max: props.data ? props.data.incoming_errors_max : '-',
+      avg: props.data ? props.data.incoming_errors_avg : '-',
+      um: "Count",
+    },
+    {
+      indice: "Outgoing Error",
+      min: props.data ? props.data.outgoing_errors_min : '-',
+      max: props.data ? props.data.outgoing_errors_max : '-',
+      avg: props.data ? props.data.outgoing_errors_avg : '-',
+      um: "Count",
+    },
+    {
+      indice: "Incoming Discard",
+      min: props.data ? props.data.incoming_errors_discard_min : '-',
+      max: props.data ? props.data.incoming_errors_discard_max : '-',
+      avg: props.data ? props.data.incoming_errors_discard_avg : '-',
+      um: "Count",
+    },
+    {
+      indice: "Outgoing Discard",
+      min: props.data ? props.data.outgoing_errors_discard_min : '-',
+      max: props.data ? props.data.outgoing_errors_discard_max : '-',
+      avg: props.data ? props.data.outgoing_errors_discard_avg : '-',
+      um: "Count",
+    },
+  ];
   return (
     <div className="h-auto w-full">
       <h2>Calculated Data from Chart</h2>
       <table className="w-full min-w-max table-auto text-left">
         <thead>
           <tr>
-            {TABLE_HEAD_INTERFACE.map((head) => (
+            {TABLE_HEAD_INTERFACE.map((head, i) => (
               <th
                 key={head}
                 className="border-b border-blue-gray-100 bg-blue-gray-50 p-4"
@@ -264,7 +262,9 @@ export function InterfaceChartTable(props: any) {
                   color="blue-gray"
                   className="font-normal leading-none opacity-70"
                 >
-                  {head}
+                  <div>
+                    {head}
+                  </div>
                 </Typography>
               </th>
             ))}

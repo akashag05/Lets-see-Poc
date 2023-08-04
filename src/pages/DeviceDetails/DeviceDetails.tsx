@@ -108,7 +108,7 @@ const DeviceDetail = () => {
                 <MemoryUtilization device={devices[selectedDevice]} />
               </TabPanel>
               <TabPanel key="interface" value="interface">
-                <Interface />
+                <Interface device={devices[selectedDevice]} />
               </TabPanel>
             </TabsBody>
           </Tabs>

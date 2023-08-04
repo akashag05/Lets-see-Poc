@@ -20,6 +20,7 @@ const Table = (props: any) => {
     getTableProps,
     getTableBodyProps,
     headerGroups,
+    row,
     page,
     prepareRow,
     state,
@@ -85,6 +86,11 @@ const Table = (props: any) => {
             );
           })}
         </tbody>
+        {/* <tfoot className="text-center">
+          <td colSpan={100}>
+            {row.length == 0 ? 'No data' : ''}
+          </td>
+        </tfoot> */}
       </table>
       <div>
         page {pageIndex + 1} of {pageOptions.length}

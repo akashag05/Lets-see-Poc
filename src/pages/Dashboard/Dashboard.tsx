@@ -16,7 +16,7 @@ const Dashboard = () => {
       try {
         const response = await fetch("http://95.217.191.79:8000/allDevices");
         const data = await response.json();
-        console.log("Dashboard Table", data);
+        // console.log("Dashboard Table", data);
         setData(data);
       } catch (error) {
         console.error("Error fetching data:", error);

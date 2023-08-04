@@ -6,28 +6,22 @@ import { interfaceData } from '@/api/interface'
 import { useAppContext } from '../appContext'
 import moment from "moment";
 
-function Interface() {
-    const currentTime = moment();
+function Interface(props:any) {
     const {time, toggleTime} = useAppContext()
-    const bodyData = {
-        lte: currentTime.format("YYYY-MM-DDTHH:mm:ss"),
-        gte: time,
-        device: "CGB-CH-ROT-RDS-R-1",
-    };
     let [response, setResponse] = React.useState(MOCK_DATA);
-
+    
     useEffect(() => {
+        const currentTime = moment();
+        const bodyData = {
+            lte: currentTime.format("YYYY-MM-DDTHH:mm:ss"),
+            gte: time,
+            device: props.device,
+        };
         const fetchChartData = async () => {
             interfaceData(bodyData).then((data) => setResponse(data));
         }
         fetchChartData();
-    }, [])
-
-    // setResponse(val)
-    // useEffect(() => {
-    //     return
-    // }, [response])
-
+    }, [props.device, time])
 
     return (
         <div className='ml-14'>

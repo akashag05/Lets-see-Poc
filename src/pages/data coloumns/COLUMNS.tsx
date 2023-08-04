@@ -114,6 +114,8 @@ export const interfaceColoumns = [
             ModalOpen={modalOpen}
             setModalOpen={setModalOpen}
             value={props.row.original}
+            unit={units[length]}
+            length={length}
           />
           <div
             className="underline cursor-pointer"
