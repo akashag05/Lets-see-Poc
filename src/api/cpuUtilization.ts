@@ -1,5 +1,5 @@
 export const cpuUtilization = async (props: any) => {
-//   console.log("props  in add role", props);
+  //   console.log("props  in add role", props);
   try {
     const res = await fetch(`http://95.217.191.79:8000/cpuUtilization`, {
       method: "POST",
@@ -7,10 +7,15 @@ export const cpuUtilization = async (props: any) => {
         "Content-Type": "application/json",
         // Authorization: `Bearer ${sessionStorage.getItem("token")}`,
       },
-        body: JSON.stringify(props),
+      body: JSON.stringify(props),
     });
-    const newData = await res.json();
-    return newData;
+    if (res) {
+      const newData = await res.json();
+      return newData;
+    }
+    else {
+      return []
+    }
   } catch (error) {
     console.error("Error:", error);
   }
