@@ -10,7 +10,7 @@ export const cpuUtilization = async (props: any) => {
     });
     if (res) {
       const newData = await res.json();
-      console.log("props  in add role", newData);
+      // console.log("props  in add role", newData);
       return newData;
     }
     else {

@@ -27,7 +27,7 @@ export function Modal(props: any) {
     setInterfaceSelect(props.interfaceName)
   },[size])
   useEffect(() => {
-    console.log("'"+interfaceSelect+"'")
+    // console.log("'"+interfaceSelect+"'")
     const currentTime = moment();
     const bodyData = {
       lte: currentTime.format("YYYY-MM-DDTHH:mm:ss"),
@@ -109,7 +109,6 @@ export function Modal(props: any) {
                   };
                 })}
               />
-              {/* </Select> */}
 
               <Picker />
             </div>

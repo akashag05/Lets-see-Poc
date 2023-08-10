@@ -10,7 +10,7 @@ export const interfaceData = async (props: any) => {
       body: JSON.stringify(props),
     });
     const newData = await res.json();
-    // console.log("data in interface data", newData);
+    console.log("data in interface data", newData);
     return newData;
   } catch (error) {
     console.error("Error:", error);
@@ -18,7 +18,7 @@ export const interfaceData = async (props: any) => {
 };
 
 export const interfaceNames = async (props: any) => {
-  // console.log("props  in All interfaces name", props);
+  console.log("props  in All interfaces name", props);
   try {
     const res = await fetch(`http://95.217.191.79:8000/getAll`, {
       method: "POST",
@@ -29,7 +29,7 @@ export const interfaceNames = async (props: any) => {
       body: JSON.stringify(props),
     });
     const newData = await res.json();
-    // console.log("data in All interfaces name", newData);
+    console.log("data in All interfaces name", newData);
     return newData;
   } catch (error) {
     console.error("Error:", error);
