@@ -1,5 +1,4 @@
 export const cpuUtilization = async (props: any) => {
-  //   console.log("props  in add role", props);
   try {
     const res = await fetch(`http://95.217.191.79:8000/cpuUtilization`, {
       method: "POST",
@@ -11,6 +10,7 @@ export const cpuUtilization = async (props: any) => {
     });
     if (res) {
       const newData = await res.json();
+      console.log("props  in add role", newData);
       return newData;
     }
     else {

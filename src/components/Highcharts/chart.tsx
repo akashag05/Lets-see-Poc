@@ -82,7 +82,7 @@ export const Chart: React.FC = (props: any) => {
               // y: 40,
             },
             xAxis: {
-              type: "datetime",
+              type: "category",
             },
             yAxis: {
               title: {
@@ -127,7 +127,9 @@ export const Chart: React.FC = (props: any) => {
               {
                 type: "area",
                 name: `${props.kpiName} 1`,
-                data: response?.data,
+                data: response?.data.map((data, i) => {
+                  return [new Date(data[0]).toLocaleString("en-US", { month: "short", day: "2-digit", year: "numeric", hour: '2-digit', minute: '2-digit' }), data[1]]
+                }),
               },
             ],
           });
@@ -227,7 +229,7 @@ export const Chart: React.FC = (props: any) => {
             // y: 40,
           },
           xAxis: {
-            type: "datetime",
+            type: "category",
           },
           yAxis: {
             title: {
@@ -334,7 +336,7 @@ export const MemoryChart = (props: any) => {
               y: 40,
             },
             xAxis: {
-              type: "datetime",
+              type: "category",
             },
             yAxis: {
               title: {
@@ -353,17 +355,23 @@ export const MemoryChart = (props: any) => {
               {
                 type: "area",
                 name: "Used Memory",
-                data: data?.data.map((point) => [point[0], point[1]]),
+                data: data?.data.map((data, i) => {
+                  return [new Date(data[0]).toLocaleString("en-US", { month: "short", day: "2-digit", year: "numeric", hour: '2-digit', minute: '2-digit' }), data[1]]
+                }),
               },
               {
                 type: "line",
                 name: "Free Memory",
-                data: data?.data.map((point) => [point[0], point[2]]), // Sample conversion rate (EUR to GBP)
+                data: data?.data.map((data, i) => {
+                  return [new Date(data[0]).toLocaleString("en-US", { month: "short", day: "2-digit", year: "numeric", hour: '2-digit', minute: '2-digit' }), data[2]]
+                }), // Sample conversion rate (EUR to GBP)
               },
               {
                 type: "line",
                 name: "Total Memory",
-                data: data?.data.map((point) => [point[0], point[3]]), // Sample conversion rate (USD to GBP)
+                data: data?.data.map((data, i) => {
+                  return [new Date(data[0]).toLocaleString("en-US", { month: "short", day: "2-digit", year: "numeric", hour: '2-digit', minute: '2-digit' }), data[3]]
+                }), // Sample conversion rate (USD to GBP)
               },
             ],
           });
